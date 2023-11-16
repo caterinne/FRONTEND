@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" >
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <title>Oficina de Relaciones Internacionales</title>
+</head>
+<body>
+    <div>
+        <nav id="Imagen">
+            <img src="../../../assets/LOGO_ORI.png" alt="Logo Ori">
+         </nav>
+    </div>
+    <form class="contenedor" action="javascript:void(0);" [formGroup]="form">
+        <br>
+        <nav id="cuadroLogin">
+            <h1 style="font-size: 30px; font-family: 'Poppins', sans-serif;">Ingresar</h1>
+            <nav id="inputs">
+              <br><br><br>
+              <input type="text" formControlName="username" name="username" id="username" placeholder="Usuario" autocomplete="off" class="fname" required/><br><br>
+              <br><br><br>
+              <input type="password" formControlName="password" name="password" id="password" placeholder="Contraseña" autocomplete="off" class="fname" (keypress)="handleKeyboardEvent($event)" required/><br><br>
+              <br><br>
+              <button type="submit" (click)="Login()" style="font-family: 'Poppins', sans-serif;">Iniciar Sesión</button>
+              <br><br>
+            </nav>
+        </nav>
+     </form>
+</body>
+</html>

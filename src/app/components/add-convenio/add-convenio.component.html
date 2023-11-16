@@ -1,0 +1,48 @@
+<div>
+  <app-header></app-header>
+  <div>
+    <h2 class="titulo">Agregar Convenio</h2>
+    <form class="ingreso" (ngSubmit)="addConvenio(formContact)" #formContact="ngForm">
+      
+      <div class="orden">
+        <select name="nombreInst" class="seleccion" [(ngModel)]="formulario.id_institucion" required [selectedIndex]="selectedIndexIns" (change)="onOptionSelected()">
+          <option *ngIf="true" disabled selected value="">Seleccione una institución</option>
+          <option *ngFor="let convenio of optionsInstituciones" [value]="convenio">{{convenio}}</option>
+        </select>
+        <br>  
+
+        <select name="coordinadorInstitucion" class="seleccion" [(ngModel)]="formulario.id_coordinador" required  required [selectedIndex]="selectedIndexCoor">
+          <option *ngIf="true" disabled selected value="">Coordinador de institución</option>
+          <option *ngFor="let coordinador of optionsCoor" [value]="coordinador">{{ coordinador }}</option>
+        </select>
+      </div>
+
+      <div class="orden">
+        <input  name='nombreConvenio' type="text" class="input" [(ngModel)]="formulario.nombre_conv" placeholder="Ingrese nombre de convenio" required>
+        <input name='tipoDeConvenio'  type="text" class="input" [(ngModel)]="formulario.tipo_conv" placeholder="Tipo de convenio" required>
+      </div>
+
+      <div class="orden">
+        <input type="text" class="input" name='vigencia' [(ngModel)]="formulario.vigencia" placeholder="Vigencia" required>
+        <input type="number" class="input" name='ano_firma' [(ngModel)]="formulario.ano_firma" placeholder="Año de Firma" required>
+      </div>
+
+      <div class="orden">
+        <input type="number" class="input" name='cupos' [(ngModel)]="formulario.cupos" placeholder="Cupos" required>
+        <select name="tipoDeFirma" class="seleccion" [(ngModel)]="formulario.tipo_firma" required>
+          <option *ngIf="true" disabled selected value="">Tipo de firma</option>
+          <option *ngFor="let tipo of tipoDeFirma" [value]="tipo">{{ tipo }}</option>
+        </select>
+      </div>
+
+      <div class="orden">
+        <input type="text" name='documentos' class="input" [(ngModel)]="formulario.documentos" placeholder="Documentos" required>
+      </div>
+
+      <div class="orden">
+        <button type="submit">Agregar Convenio</button>
+      </div>
+      
+    </form>
+  </div>
+</div>

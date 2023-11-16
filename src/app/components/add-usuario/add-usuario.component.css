@@ -1,0 +1,136 @@
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  
+  .boton {
+    padding-top: 50px;
+    margin: 0 auto; /* Esto centrará el formulario horizontalmente */
+    text-align: start; /* Esto centrará el contenido del formulario */
+    width: 1500px;
+  }
+  
+  button {
+    text-align: start;
+    font-size: medium;
+    background-color: #253e85;
+    border-radius: 5px; /* Cambiado de 5cm a 5px */
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #869ad1;
+    color: white;
+  }
+  
+  .volverButton {
+    padding-right: 10px;
+  }
+  
+  .Fechas {
+    padding-left: 100px;
+  }
+  
+  .modal {
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    border-radius: 10px;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.5s;
+    animation-name: animatetop;
+    animation-duration: 0.5s;
+  }
+  
+  @-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
+  
+  @keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
+  
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 2px 16px;
+    background-color: #253e85;
+    color: white;
+  }
+  
+  .modal-body {
+    padding: 2px 16px;
+  }
+  
+  .orden {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  input {
+    margin-right: 10px;
+  }
+  
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .seleccion, .input, select {
+    flex: 1;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .orden {
+    display: flex;
+    gap: 10px;
+    width: 97%;
+  }
+
+  .titulo {
+    text-align: center;
+  }

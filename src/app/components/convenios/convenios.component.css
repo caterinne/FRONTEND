@@ -1,0 +1,35 @@
+body {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.fullElements {
+    text-align: center;
+    padding: 20px; 
+    border-collapse: collapse;
+}
+
+.listTittle th {
+    padding-inline: 100px; 
+    
+}
+
+.listElements td {
+    padding-inline: 100px; 
+
+}
+
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #253e85;}
+
+
+.listElements:hover {
+    background-color: #869ad1;
+    color: aliceblue;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+<body>
+    <header>
+        <div>
+            <img (click)="Principal()" id ='logo' title="Inicio" src="../../../assets/LOGO_ORI2.png" width="150" alt="Logo de ORI">
+        </div>
+        <nav>
+            <div class="custom-select">
+                <select *ngIf="loginService.getUserRole() === 'si'" (change)="select($event)">
+                    <option *ngIf="true" disabled selected value="" >Opciones para agregar</option>
+                    <option value="convenio">Agregar Convenio</option>
+                    <option value="institucion">Agregar Institución</option>
+                    <option value="coordinador">Agregar Coordinador</option>
+                    <option value="usuario" *ngIf="loginService.getUserRole() === 'si'" >Agregar usuario</option>
+                </select>
+            </div>
+            <img class="perfil" src="../../../assets/PERFIL.png" alt="search" title="Perfil">
+            <img (click)="logout()" class="logout" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout" width="30"> 
+        </nav>
+    </header>
+</body>
+</html>

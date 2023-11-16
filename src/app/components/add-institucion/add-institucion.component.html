@@ -1,0 +1,23 @@
+<div>
+    <app-header></app-header>
+    <div>
+        <h2 class="titulo" >Añadir Institución</h2>
+        <form class="ingreso" (ngSubmit)="agregarInstitucion(formContact)" #formContact="ngForm">
+    
+        <div class="orden">
+            <input name='nombre_inst' type="text" class="input" [(ngModel)]="formulario.nombre_inst" placeholder="Nombre de institución" required>
+            <input name='unidad_academica' type="text" class="input" [(ngModel)]="formulario.unidad_academica" placeholder="Unidad Académica" required>
+        </div>
+    
+        <div class="orden">
+            <input name='pais' type="text" class="input" [(ngModel)]="formulario.pais" placeholder="País" required>
+            <input name='tipo_institucion' type="text" class="input" [(ngModel)]="formulario.tipo_institucion" placeholder="Tipo de institución" required>
+        </div>
+    
+        <div class="orden">
+            <button type="submit">Agregar Institución</button>
+        </div>
+    
+        </form>
+    </div>
+</div>

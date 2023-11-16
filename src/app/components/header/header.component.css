@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+header {
+    display: flex;
+    justify-content: space-between; /* Esto crea un espacio entre los elementos horizontalmente, con los div*/
+    align-items: center; /* Esto centra los elementos verticalmente */
+    min-height: 70px;
+    background-color: #253e85;
+}
+#logo{
+    border-radius: 50px;
+    margin-left: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-left: 10px;
+    
+}
+
+input[type="text"] {
+    border-radius: 30px;
+    height: 20px;
+    background-color: #f4f5f9;
+    border: none;
+    width: 500px;
+    padding: 5px 10px;
+    box-sizing: content-box;
+}
+
+.buscador{
+    width: 35px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.buscador:hover {
+    background-color: #869ad1 ;
+    color:white;
+}
+nav{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+button{
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    background-color: #253e85;
+    font-weight: 600;
+    padding-right: 5px;
+    margin: 20px;
+    border-color: white;
+    border-style: solid;
+    padding: 5px 20px;
+}
+
+button:hover {
+    background-color: #869ad1 ;
+    color:white;
+}
+.perfil{
+    width: 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 20px;
+    padding: 5px;
+}
+
+.perfil:hover {
+    background-color: #869ad1 ;
+    color:white;
+    
+}
+
+.logout{
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.logout:hover {
+    background-color: #869ad1 ;
+    color:white;
+}
+
+@media (max-width: 700px){
+    header{
+        flex-direction: column;
+    }
+    
+    nav{
+        padding: 10px 0px;
+    }
+}
+
+option {
+    font-size: 16px;
+}
+
+.custom-select {
+    min-width: 200px;
+    position: relative;
+  
+  
+  select {
+    appearance: none;
+    /*  safari  */
+    -webkit-appearance: none;
+    /*  other styles for aesthetics */
+    border-radius: 30px;
+    background-color: #253e85;
+    border: 2px solid #ffffff; /* Añadimos un borde sólido de 2px */
+    padding: 5px 35px;
+    padding-left: 10px;
+    color:white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+
+    cursor: pointer;
+    transition: border-color 0.3s; /* Agregamos una transición para el color del borde */
+  }
+  
+  .custom-select::before,
+  .custom-select::after {
+    --size: 0.3rem;
+    content: "";
+    position: absolute;
+    right: 1rem;
+    pointer-events: none;
+
+  }
+  
+  .custom-select::before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid rgb(255, 255, 255);
+    top: 30%;
+  }
+  
+  .custom-select::after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid rgb(255, 255, 255);
+    top: 55%;
+  }
+}
