@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { PageComponent } from './components/page/page.component';
 import { loginGuard } from 'src/guards/login.guard';
-import { AddConvenioComponent } from './components/add-convenio/add-convenio.component';
-import { AddCoordinadorComponent } from './components/add-coordinador/add-coordinador.component';
-import { AddInstitucionComponent } from './components/add-institucion/add-institucion.component';
-import { AddUsuarioComponent } from './components/add-usuario/add-usuario.component';
+import { AddConvenioComponent } from './components/agregar/add-convenio/add-convenio.component';
+import { AddCoordinadorComponent } from './components/agregar/add-coordinador/add-coordinador.component';
+import { AddInstitucionComponent } from './components/agregar/add-institucion/add-institucion.component';
+import { AddUsuarioComponent } from './components/agregar/add-usuario/add-usuario.component';
+
 
 
 const routes: Routes = [

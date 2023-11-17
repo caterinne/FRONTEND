@@ -17,13 +17,15 @@
             </tr>
           </thead>
           <tbody >
-            <tr  class="listElements" *ngFor="let convenio of filtrarConvenios(); let i = index">
-    
+            <tr (click)="verDetalles($event, convenio)" class="listElements" *ngFor="let convenio of filtrarConvenios(); let i = index">
               <td>{{ convenio.Nombre_Convenio }}</td>
               <td>{{ convenio.Tipo_Convenio }}</td>
               <td>{{ convenio.Vigencia }}</td>
               <td>{{ convenio.Anio_Firma }}</td>
               <td>{{ convenio.Tipo_Firma }}</td>
+              <button mat-icon-button (click)="editarConvenio($event, convenio)">
+                <mat-icon>edit</mat-icon>
+              </button>
             </tr>
           </tbody>
     </table>
