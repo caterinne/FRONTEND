@@ -18,9 +18,7 @@ export class LoginComponent {
     username: ['', Validators.required],
     password: ['', Validators.required],
   });
-
   usuarios: any;
-
   constructor(
     private router: Router,
     private renderer: Renderer2,
@@ -59,10 +57,9 @@ export class LoginComponent {
   }
 
   hacerPeticion() {
-    const url = 'http://localhost:3000/api/usuarios';
-    this.http.get(url).subscribe((data: any) => {
+    const url = 'http://localhost:3000/api/';
+    this.http.get(url+'usuarios').subscribe((data: any) => {
       this.usuarios = data;
     });
   }
-
 }

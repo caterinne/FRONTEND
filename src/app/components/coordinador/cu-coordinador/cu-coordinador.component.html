@@ -1,0 +1,40 @@
+<div class="title">
+    <h1><b>Coordinador</b></h1>
+</div>
+<form [formGroup]="coordinadorForm" (ngSubmit)="onFormSubmit()">
+    <div class="content">
+        <div>
+            <div class="row">
+                <div>
+                    <label>Nombre Coordinador</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="nombre">
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="correo">
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label>Nombre Institución</label>
+                    <select formControlName="id_institucion">
+                        <option *ngIf="!data" disabled selected value="">Seleccione una institución</option>
+                        <option *ngFor="let convenio of optionsInstituciones; let i = index" [value]="idInstituciones[i]">
+                            {{convenio}}
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <label>Tipo Coordinador</label>
+                    <select formControlName="tipo">
+                        <option *ngFor="let opcion of tipoCord" [value]="opcion">{{opcion}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="action">
+        <button type="button" [mat-dialog-close]="false"> Cancelar </button>
+        <button type="submit">{{data ? 'Actualizar Coordinador' : 'Agregar Coordinador'}}</button>
+    </div>
+</form>

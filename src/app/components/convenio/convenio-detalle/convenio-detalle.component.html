@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+<body>
+    <div>
+        <app-header></app-header>
+
+        <nav class = "detalle" id="detalle">
+          <h1>{{data.Nombre_Convenio}} ID: {{data.ID_Convenio}}</h1>
+
+          <p>Tipo de convenio: {{ data.Tipo_Convenio }} </p>
+          <p>Vigencia: {{ data.Vigencia }} </p>
+          <p>Año de firma: {{ data.Anio_Firma }} </p>
+          <p>Tipo de firma: {{ data.Tipo_Firma }} </p>
+          <p>Cupos: {{ data.Cupos }} </p>
+          <p>Documentos: {{ data.Documentos }} </p>
+          <p>Alcance: {{data.alcance}}</p>
+          <p>Nombre coordinador: {{data.Nombre_Coordinador}}</p>
+          <p>Correo coordinador: {{data.Correo_Coordinador}}</p>
+          <p>Nombre institucion: {{data.Nombre_Institucion}}</p>
+          <p>Pais: {{data.Pais}}</p>
+          <p>Tipo convenio: {{data.Tipo_Convenio}}</p>
+          <p>Tipo coordinador: {{data.Tipo_Coordinador}}</p>
+          <p>Tipo institucion: {{data.Tipo_Institucion}}</p>
+          <p>Unidad academica: {{data.Unidad_Academica}}</p>
+        </nav>
+    </div>
+</body>
+</html>

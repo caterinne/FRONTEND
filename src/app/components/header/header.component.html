@@ -8,20 +8,28 @@
 <body>
     <header>
         <div>
-            <img (click)="Principal()" id ='logo' title="Inicio" src="../../../assets/LOGO_ORI2.png" width="150" alt="Logo de ORI">
+            <img  (click)="goMainPage()" id ='logo' title="Inicio" src="../../../assets/LOGO_ORI2.png" width="150" alt="Logo de ORI">
         </div>
         <nav>
             <div class="custom-select">
-                <select *ngIf="loginService.getUserRole() === 'si'" (change)="select($event)">
-                    <option *ngIf="true" disabled selected value="" >Opciones para agregar</option>
-                    <option value="convenio">Agregar Convenio</option>
-                    <option value="institucion">Agregar Institución</option>
-                    <option value="coordinador">Agregar Coordinador</option>
-                    <option value="usuario" *ngIf="loginService.getUserRole() === 'si'" >Agregar usuario</option>
+                <select *ngIf="loginService.getUserRole()?.toLowerCase() !== 'no'" [disabled]="loginService.getUserRole()?.toLowerCase() === 'no'">
+                    <option>Opciones para agregar &#9660;</option>
+                    <option (click)="addConveniosForm()">Agregar Convenio</option>
+                    <option (click)="addInstitucionForm()">Agregar Institución</option>
+                    <option (click)="addCoordinadorForm()">Agregar Coordinador</option>
+                    <option (click)="addUsuarioForm()" *ngIf="loginService.getUserRole() === 'si'">Agregar Usuario</option> 
                 </select>
             </div>
-            <img class="perfil" src="../../../assets/PERFIL.png" alt="search" title="Perfil">
-            <img (click)="logout()" class="logout" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout" width="30"> 
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+              
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="irAPagina('institucion')">Mostrar Instituciones</button>
+                <button mat-menu-item (click)="irAPagina('coordinador')">Mostrar Coordinadores</button>
+              </mat-menu>
+            <img  (click)="goPerfil()" class="perfil" src="../../../assets/PERFIL.png" alt="search" title="Perfil">
+            <img  (click)="logout()" class="logout" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout" width="30"> 
         </nav>
     </header>
 </body>

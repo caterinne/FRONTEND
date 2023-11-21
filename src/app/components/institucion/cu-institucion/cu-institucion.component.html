@@ -1,0 +1,37 @@
+<div class="title">
+    <h1><b>Institución</b></h1>
+</div>
+<form [formGroup]="institucionForm" (ngSubmit)="onFormSubmit()">
+    <div class="content">
+        <div>
+            <div class="row">
+                <div>
+                    <label>Nombre Institución</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="nombre_inst">
+                </div>
+                <div>
+                    <label>Pais</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="pais">
+                </div>
+                <div>
+                    <label>Tipo Institución</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="tipo_institucion">
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label>Unidad Academica</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="unidad_academica">
+                </div>
+                <div>
+                    <label>Alcance</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="alcance">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="action">
+        <button type="button" [mat-dialog-close]="false"> Cancelar </button>
+        <button type="submit">{{data ? 'Actualizar Institución' : 'Agregar Institución'}}</button>
+    </div>
+</form>

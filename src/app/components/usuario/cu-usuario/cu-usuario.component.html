@@ -1,0 +1,43 @@
+<div class="title">
+    <h1><b>Usuario</b></h1>
+</div>
+<form [formGroup]="usuarioForm" (ngSubmit)="onFormSubmit()">
+    <div class="content">
+        <div>
+            <div class="row">
+                <div>
+                    <label>Nombre</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="nombre">
+                </div>
+                <div>
+                    <label>Apellido</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="apellido">
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="email">
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label>Contraseña</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="contrasena">
+                </div>
+                <div>
+                    <label>Role de Usuario</label>
+                    <select formControlName="privilegios">
+                        <option *ngFor="let opcion of privilegios" [value]="opcion">{{opcion}}</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Vigencia</label>
+                    <input type="text" placeholder="Ejemplo" formControlName="vigencia">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="action">
+        <button type="button" [mat-dialog-close]="false"> Cancelar </button>
+        <button type="submit">{{data ? 'Actualizar Usuario' : 'Agregar Usuario'}}</button>
+    </div>
+</form>

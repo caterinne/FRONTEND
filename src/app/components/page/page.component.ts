@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html',
-  styleUrls: ['./page.component.css']
+  styleUrls: ['./page.component.css'],
 })
 export class PageComponent {
   constructor(private router: Router, private renderer: Renderer2, @Inject(DOCUMENT) private document: Document) { }

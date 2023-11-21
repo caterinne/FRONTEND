@@ -1,60 +1,79 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { PageComponent } from './components/page/page.component';
-
 import { AppRoutingModule } from './app-routing.module';
-
-
-
-import { HeaderComponent } from './components/header/header.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './components/header/header.component';
+import { PageComponent } from './components/page/page.component';
+import { ConveniosComponent } from './components/convenio/convenios.component';
+import { CUConvenioComponent } from './components/convenio/cu-convenio/cu-convenio.component';
 
-import { NgSelectModule } from '@ng-select/ng-select';
-import { NgToastModule } from 'ng-angular-popup';
-import { ConveniosComponent } from './components/convenios/convenios.component';
-import { AddConvenioComponent } from './components/agregar/add-convenio/add-convenio.component';
-import { AddCoordinadorComponent } from './components/agregar/add-coordinador/add-coordinador.component';
-import { AddInstitucionComponent } from './components/agregar/add-institucion/add-institucion.component';
-import { AddUsuarioComponent } from './components/agregar/add-usuario/add-usuario.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
-import { ConvenioDetalleComponent } from './components/convenios/convenio-detalle/convenio-detalle.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import { HttpClientModule } from '@angular/common/http';
+import { InstitucionComponent } from './components/institucion/institucion.component';
+import { CUInstitucionComponent } from './components/institucion/cu-institucion/cu-institucion.component';
+import { CoordinadorComponent } from './components/coordinador/coordinador.component';
+import { CUCoordinadorComponent } from './components/coordinador/cu-coordinador/cu-coordinador.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { CUUsuarioComponent } from './components/usuario/cu-usuario/cu-usuario.component';
+import { LoginComponent } from './components/login/login.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { ConvenioDetalleComponent } from './components/convenio/convenio-detalle/convenio-detalle.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    PageComponent,
-
     HeaderComponent,
+    PageComponent,
     ConveniosComponent,
-    AddConvenioComponent,
-    AddCoordinadorComponent,
-    AddInstitucionComponent,
-    AddUsuarioComponent,
-    ConvenioDetalleComponent,
+    CUConvenioComponent,
+    InstitucionComponent,
+    CUInstitucionComponent,
+    CoordinadorComponent,
+    CUCoordinadorComponent,
+    UsuarioComponent,
+    CUUsuarioComponent,
+    LoginComponent,
+    PerfilComponent,
+    ConvenioDetalleComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
-    FormsModule,
     BrowserAnimationsModule,
-    MatDialogModule,
-    NgSelectModule,
-    NgToastModule,
-    ReactiveFormsModule,
+    MatToolbarModule,
+    MatButtonModule,
     MatIconModule,
+    MatDialogModule,
+    MatInputModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
-  providers: [
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
-  ],
-  bootstrap: [AppComponent],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ORIUCM": {
+    "prueba1": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/oriucm",
+            "outputPath": "dist/prueba1",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,7 +25,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/custom-theme.scss",
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ORIUCM:build:production"
+              "browserTarget": "prueba1:build:production"
             },
             "development": {
-              "browserTarget": "ORIUCM:build:development"
+              "browserTarget": "prueba1:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ORIUCM:build"
+            "browserTarget": "prueba1:build"
           }
         },
         "test": {
@@ -84,6 +84,7 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
+              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
@@ -97,6 +98,6 @@
     }
   },
   "cli": {
-    "analytics": "292a18dc-a81f-4c35-ad1a-b5aa8cf4782e"
+    "analytics": "a889c277-f450-4a6c-990f-016b3fc03760"
   }
 }

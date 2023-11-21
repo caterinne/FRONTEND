@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convenios</title>
+</head>
+<body class="body">
+  <mat-form-field>
+    <mat-label>Buscar por alcance, institucion, país, convenio, vigencia... </mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese desde tres letras" #input>
+  </mat-form-field>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- COLUMNA ALCANCE -->
+      <ng-container matColumnDef="ID_Convenio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.ID_Convenio}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Alcance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Alcance </th>
+        <td mat-cell *matCellDef="let row"> {{row.Alcance}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Cupos">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cupos </th>
+        <td mat-cell *matCellDef="let row"> {{row.Cupos}} </td>
+      </ng-container>
+  
+      <!-- Progress Column -->
+      <ng-container matColumnDef="Pais">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> País </th>
+        <td mat-cell *matCellDef="let row"> {{row.Pais}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Nombre_Institucion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Institución </th>
+        <td mat-cell *matCellDef="let row"> {{row.Nombre_Institucion}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Tipo_Convenio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Convenio </th>
+        <td mat-cell *matCellDef="let row"> {{row.Tipo_Convenio}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Vigencia">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Vigencia </th>
+        <td mat-cell *matCellDef="let row"> {{row.Vigencia | date}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Nombre_Coordinador">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Coordinador </th>
+        <td mat-cell *matCellDef="let row"> {{row.Nombre_Coordinador}} </td>
+      </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="Correo_Coordinador">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo Coordinador </th>
+        <td mat-cell *matCellDef="let row"> {{row.Correo_Coordinador}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Tipo_Firma">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Firma </th>
+        <td mat-cell *matCellDef="let row"> {{row.Tipo_Firma}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Documentos">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Documentos </th>
+        <td mat-cell *matCellDef="let row"> {{row.Documentos}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button (click)="viewDetails(row)">
+            <mat-icon>find_in_page</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="editConveniosForm(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteConvenio(row.ID_Convenio)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No se ha encontrado ningún resultado con: {{input.value}}</td>
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</body>
+</html>

@@ -13,63 +13,17 @@ header {
     margin-top: 15px;
     cursor: pointer;
 }
-
-.search{
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-    margin-left: 10px;
-    
-}
-
-input[type="text"] {
-    border-radius: 30px;
-    height: 20px;
-    background-color: #f4f5f9;
-    border: none;
-    width: 500px;
-    padding: 5px 10px;
-    box-sizing: content-box;
-}
-
-.buscador{
-    width: 35px;
-    border-radius: 50px;
-    cursor: pointer;
-}
-
-.buscador:hover {
-    background-color: #869ad1 ;
-    color:white;
-}
 nav{
     display: flex;
     align-items: center;
     margin-right: 10px;
     margin-top: 10px;
 }
-button{
-    border-radius: 30px;
-    color: white;
-    cursor: pointer;
-    background-color: #253e85;
-    font-weight: 600;
-    padding-right: 5px;
-    margin: 20px;
-    border-color: white;
-    border-style: solid;
-    padding: 5px 20px;
-}
-
-button:hover {
-    background-color: #869ad1 ;
-    color:white;
-}
 .perfil{
     width: 25px;
     border-radius: 30px;
     cursor: pointer;
-    margin: 20px;
+    margin: 5px;
     padding: 5px;
 }
 
@@ -80,6 +34,7 @@ button:hover {
 }
 
 .logout{
+    width: 25px;
     border-radius: 50px;
     cursor: pointer;
     padding: 5px;
@@ -96,7 +51,7 @@ button:hover {
     }
     
     nav{
-        padding: 10px 0px;
+        padding: 5px 0px;
     }
 }
 
@@ -104,10 +59,17 @@ option {
     font-size: 16px;
 }
 
+mat-icon{
+    color: white;
+}
+
+
 .custom-select {
-    min-width: 200px;
+    min-width: 100px;
     position: relative;
-  
+    width: 100%;
+    padding-right: 15px;
+
   
   select {
     appearance: none;

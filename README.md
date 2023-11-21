@@ -1,18 +1,12 @@
-# ORI UCM
+##FALTA POR TERMINAR:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
-
-# PROYECTO PAGINA WEB ORI UCM 
-# FALTA POR TERMINAR:
 - Pagina de usuario (Modificar usuario, que el admin pueda acceder a los otros usuarios y modificarlos)(como pagina de user de ds)
-- Todos los modificar
-- Todos los borrar
-- Implementación de filtros
 - Implementación de alerta como ventana emergente y enviar al email
 - Implementar mensaje default para que jefe ORI lo envie rapidamente
 - Implementación de generación de informes para Jefe ORI
-- Mostrar Información adicional de los convenios
+- Diseño de la pagina
 - Volver a escuchar audio para sacar más requerimientos
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 
 ## Development server
 
@@ -37,6 +31,3 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-
-

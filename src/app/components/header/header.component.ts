@@ -1,66 +1,57 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { LoginService } from 'src/guards/login.service';
+import { CUConvenioComponent } from '../convenio/cu-convenio/cu-convenio.component';
 import { MatDialog } from '@angular/material/dialog';
-import { HttpClient } from '@angular/common/http';
-
+import { CUInstitucionComponent } from '../institucion/cu-institucion/cu-institucion.component';
+import { CUCoordinadorComponent } from '../coordinador/cu-coordinador/cu-coordinador.component';
+import { CUUsuarioComponent } from '../usuario/cu-usuario/cu-usuario.component';
+import { LoginService } from 'src/guards/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
+
 export class HeaderComponent {
-  constructor(
-    private router: Router,
-    public loginService: LoginService,
-    private http: HttpClient,
-    public dialog: MatDialog,
+  constructor(private dialog: MatDialog,  public loginService: LoginService, private router: Router){}
 
-
-  ) {}
-
-  agregarConvenio() {
-    this.router.navigate(['/add-convenio']);
-    console.log(this.router.url);
+  addConveniosForm(){
+    console.log('addConveniosForm called');
+    this.dialog.open(CUConvenioComponent)
   }
 
-  agregarInstitucion() {
-    this.router.navigate(['/add-institucion']);
-    console.log(this.router.url);
+  addInstitucionForm(){
+    console.log('addInstitucionForm called');
+    this.dialog.open(CUInstitucionComponent)
+  }
+  addCoordinadorForm(){
+    console.log('addCoordinadorForm called');
+    this.dialog.open(CUCoordinadorComponent)
+  }
+  addUsuarioForm(){
+    console.log('addUsuarioForm called');
+    this.dialog.open(CUUsuarioComponent)
   }
 
-  agregarCoordinador() {
-    this.router.navigate(['/add-coordinador']);
-    console.log(this.router.url);
+  getUserRole() {
+    this.loginService.getUserRole();
   }
 
-  agregarUsuario() {
-    this.router.navigate(['/add-usuario']);
-    console.log(this.router.url);
-  }
-
-  Principal() {
+  goMainPage() {
     this.router.navigate(['/page']);
     console.log(this.router.url);
   }
   logout() {
     this.loginService.logout(); // Llama al método logout del servicio
   }
-  select(event: Event) {
-    const selected = (event.target as HTMLSelectElement).value;
-    if (selected === 'convenio') {
-        this.agregarConvenio();
-    } else if (selected === 'institucion') {
-      this.agregarInstitucion();
-    } else if (selected === 'coordinador') {
-      this.agregarCoordinador();
-    } else if (selected === 'usuario') {
-      this.agregarUsuario();
-    }
-  } 
 
-  getUserRole() {
-    this.loginService.getUserRole();
+  goPerfil() {
+    this.router.navigate(['/perfil']);
+    console.log(this.router.url);
+  }
+
+  irAPagina(pagina: string): void {
+    this.router.navigate([`/${pagina}`]);
   }
 }
