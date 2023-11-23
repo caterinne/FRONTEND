@@ -6,10 +6,12 @@
     <title>Convenios</title>
 </head>
 <body class="body">
-  <mat-form-field>
-    <mat-label>Buscar por alcance, institucion, país, convenio, vigencia... </mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese desde tres letras" #input>
-  </mat-form-field>
+  <div class="buscar">
+    <mat-form-field>
+      <mat-label>Buscar por alcance, institucion, país, convenio, vigencia... </mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese desde tres letras" #input>
+    </mat-form-field>
+  </div>
 
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" matSort>

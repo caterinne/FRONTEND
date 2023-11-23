@@ -66,6 +66,7 @@ export class CUCoordinadorComponent implements OnInit {
             console.log('Respuesta del servidor (addCoordinador):', val);
             alert('Coordinador creado con éxito. ID: ' + val.id_coordinador);
             this.dialogRef.close(true);
+            window.location.reload();
           },
           error: (err: any) => {
             console.error('Error en addCoordinador:', err);
@@ -97,12 +98,11 @@ export class CUCoordinadorComponent implements OnInit {
 
 
   initializeForm() {
-    // Asegúrate de tener lógica para inicializar el formulario con los datos existentes
     this.formulario = {
-      id_institucion: this.data.ID_Institucion || '',
-      tipo: this.data.Tipo || '',
-      nombre: this.data.Nombre || '',
-      correo: this.data.Correo || '',
+      id_institucion: this.data?.ID_Institucion || '',
+      tipo: this.data?.Tipo || '',
+      nombre: this.data?.Nombre || '',
+      correo: this.data?.Correo || '',
     };
   }
 }

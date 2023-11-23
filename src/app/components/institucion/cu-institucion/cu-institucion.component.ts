@@ -60,6 +60,7 @@ export class CUInstitucionComponent implements OnInit{
             console.log('Respuesta del servidor (addConvenio):', val);
             alert('Institución creada con éxito. ID: ' + val.id_institucion);
             this.dialogRef.close(true);
+            window.location.reload();
           },
           error: (err: any) => {
             console.error('Error en addConvenio:', err);
@@ -80,11 +81,11 @@ export class CUInstitucionComponent implements OnInit{
   initializeForm() {
     // Asegúrate de tener lógica para inicializar el formulario con los datos existentes
     this.formulario = {
-      nombre_inst: this.data.Nombre_Institucion || '',
-      unidad_academica: this.data.Unidad_Academica || '',
-      pais: this.data.Pais || '',
-      alcance: this.data.Alcance || '',
-      tipo_institucion: this.data.Tipo_Institucion || '',
+      nombre_inst: this.data?.Nombre_Institucion || '',
+      unidad_academica: this.data?.Unidad_Academica || '',
+      pais: this.data?.Pais || '',
+      alcance: this.data?.Alcance || '',
+      tipo_institucion: this.data?.Tipo_Institucion || '',
     };
   }
 }

@@ -1,14 +1,21 @@
-.body{
-  table {
-    width: 100%;
-  }
-  
-  .mat-mdc-form-field {
-    font-size: 12px;
-    width: 100%;
-  }
-  
-  td, th {
-    width: 15%;
-  }
+/* Estilo para la tabla */
+.body table {
+  width: 100%;
 }
+
+.body td,
+.body th {
+  width: 15%;
+}
+
+/* Estilo para los campos de formulario */
+.mat-mdc-form-field,
+.mat-form-field,
+.buscar {
+  font-size: 12px;
+  width: 100%;
+  -webkit-width: 100%;
+  -moz-width: 100%;
+  -ms-width: 100%;
+}
+
