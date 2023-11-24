@@ -64,7 +64,7 @@ export class ConveniosComponent implements OnInit {
           alert('Convenio Eliminado');
         },
         error: (error) => {
-          alert('Convenio Eliminado');
+          alert('No se puede eliminar convenio');
           window.location.reload();
         }
       });
