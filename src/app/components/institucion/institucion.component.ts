@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { InstitucionService } from 'src/services/institucion.service';
 import { CUInstitucionComponent } from './cu-institucion/cu-institucion.component';
+import { LoginService } from 'src/guards/login.service';
 
 @Component({
   selector: 'app-institucion',
@@ -22,7 +23,7 @@ dataSource!: MatTableDataSource<any>;
   ngOnInit(): void {
     this.getInstitucionList();
   }
-  constructor(private institucion: InstitucionService, private dialog: MatDialog){}
+  constructor(private institucion: InstitucionService, private dialog: MatDialog, public loginService: LoginService){}
 
   getInstitucionList(){
     this.institucion.getInstitucionList().subscribe({
@@ -74,5 +75,13 @@ dataSource!: MatTableDataSource<any>;
         this.getInstitucionList();
       }
     });
+  }
+
+  showOptions(): boolean {
+    return this.loginService.getUserRole()?.toLowerCase() !== 'no';
+  }
+
+  disableOptions(): boolean {
+    return this.loginService.getUserRole()?.toLowerCase() === 'no';
   }
 }

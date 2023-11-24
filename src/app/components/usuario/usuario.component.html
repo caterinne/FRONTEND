@@ -1,1 +1,67 @@
-<p>usuario works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+</head>
+<body>
+    <div>
+        <app-header></app-header>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Buscar por nombre, apellido, privilegios ... </mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese desde tres letras" #input>
+        </mat-form-field>
+        <div class="titulo"><b>USUARIOS</b></div>
+        <div class="table-container">
+            <table mat-table [dataSource]="dataSource" matSort>
+          
+            <!-- COLUMNA ALCANCE -->
+            <ng-container matColumnDef="ID_Usuario">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.ID_Usuario}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Nombre">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                <td mat-cell *matCellDef="let row"> {{row.Nombre}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Apellido">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+                <td mat-cell *matCellDef="let row"> {{row.Apellido}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="Email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email</th>
+                <td mat-cell *matCellDef="let row"> {{row.Email}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Privilegios">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Privilegios</th>
+                <td mat-cell *matCellDef="let row"> {{row.Privilegios}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                <td mat-cell *matCellDef="let row">
+                    <button mat-icon-button color="primary" (click)="editUsuarioForm(row)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="deleteUsuario(row.ID_Usuario)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+            <tr mat-row *matRowDef="let usuario; columns: displayedColumns;"></tr>
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No se ha encontrado ningún resultado con: {{input.value}}</td>
+            </tr>
+            </table>
+          
+            <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </div>
+</body>
+</html>

@@ -129,7 +129,7 @@ export class CUConvenioComponent implements OnInit{
 
   initializeForm() {
     this.formulario = {
-      id_institucion: this.data?.Nombre_Institucion || 'ValorPorDefecto',
+      id_institucion: this.data?.Nombre_Institucion || '',
       id_coordinador: this.data?.Nombre_Coordinador || '',
       nombre_conv: this.data?.Nombre_Convenio || '',
       tipo_conv: this.data?.Tipo_Convenio || '',

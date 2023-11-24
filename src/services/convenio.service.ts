@@ -26,8 +26,8 @@ export class ConvenioService {
   
 
   getConvenioDetails(convenioId: string): Observable<any> {
-    // Implementa la lógica para obtener los detalles del convenio por su ID
-    const url = `${this.apiUrl}/convenios/${convenioId}`; // Reemplaza con la URL real de tu API
+    // Obtener los detalles del convenio por su ID
+    const url = `${this.apiUrl}/convenios/${convenioId}`;
     return this.http.get<any>(url);
   }
 

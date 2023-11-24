@@ -8,6 +8,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { CUConvenioComponent } from './cu-convenio/cu-convenio.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/guards/login.service';
 
 
 
@@ -30,7 +31,7 @@ export class ConveniosComponent implements OnInit {
   ngOnInit(): void {
     this.getConvenioList();
   }
-  constructor(private convenio: ConvenioService, private dialog: MatDialog, private router: Router){}
+  constructor(private convenio: ConvenioService, private dialog: MatDialog, private router: Router, public loginService: LoginService){}
 
   getConvenioList(){
     this.convenio.getConvenioList().subscribe({
@@ -90,5 +91,13 @@ export class ConveniosComponent implements OnInit {
 
   viewDetails(convenio: any): void {
     this.router.navigate(['/convenio-detalle', convenio.ID_Convenio]);
+  }
+
+  showOptions(): boolean {
+    return this.loginService.getUserRole()?.toLowerCase() !== 'no';
+  }
+
+  disableOptions(): boolean {
+    return this.loginService.getUserRole()?.toLowerCase() === 'no';
   }
 }

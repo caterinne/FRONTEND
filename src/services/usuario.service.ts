@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
   constructor(private http: HttpClient) { }
+  apiUrl = 'http://localhost:3000/api'
 
   addUsuario(data: any): Observable<any>{
     console.log('Datos en addInstitucion:', data);

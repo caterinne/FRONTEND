@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { Observable, catchError, of } from "rxjs";
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +11,14 @@ export class LoginService {
 
   session: any;
 
+  ID_Usuario: number | undefined;
+
   constructor(private router: Router,private http: HttpClient) {
     let session: any = localStorage.getItem('session');
     if (session) {
       session = JSON.parse(session);
+      this.ID_Usuario = session.ID_Usuario;
+      console.log('ID_Usuario en LoginService:', this.ID_Usuario);
     }
     this.session = session;
   }
@@ -21,6 +26,7 @@ export class LoginService {
   login(username: string, password: string, usuarios: any) {
     for (let i = 0; i < usuarios.length; i++){
       this.users.push({
+        ID_Usuario: usuarios[i].ID_Usuario,
         email: usuarios[i].Email ,
         name: usuarios[i].Nombre,
         lastname: usuarios[i].Apellido,
@@ -36,11 +42,15 @@ export class LoginService {
     if (user) {
       this.session = user;
       localStorage.setItem('session', JSON.stringify(this.session));
-      this.users =[]
-      return true; // Devuelve verdadero si el inicio de sesión es exitoso.
+  
+      // Asigna el valor de ID_Usuario
+      this.ID_Usuario = user.ID_Usuario;
+  
+      this.users = []
+      return true;
     }
-
-    return false; // Devuelve falso si las credenciales son incorrectas.
+  
+    return false;
   }
 
   logout() {
@@ -64,5 +74,13 @@ export class LoginService {
   }
   getUserName():string | undefined {
     return this.session ? this.session.username : undefined;
+  }
+  getUser(): Observable<any> {
+    return of(this.session).pipe(
+      catchError((error) => {
+        console.error("Error al obtener el usuario:", error);
+        return of(null);
+      })
+    );
   }
 }

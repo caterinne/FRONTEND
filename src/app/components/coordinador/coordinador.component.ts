@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CoordinadorService } from 'src/services/coordinador.service';
 import { CUCoordinadorComponent } from './cu-coordinador/cu-coordinador.component';
+import { LoginService } from 'src/guards/login.service';
 
 @Component({
   selector: 'app-coordinador',
@@ -22,7 +23,7 @@ dataSource!: MatTableDataSource<any>;
   ngOnInit(): void {
     this.getCoordinadorList();
   }
-  constructor(private coordinador: CoordinadorService, private dialog: MatDialog){}
+  constructor(private coordinador: CoordinadorService, private dialog: MatDialog, public loginService: LoginService){}
 
   getCoordinadorList(){
     this.coordinador.getCoordinadorList().subscribe({
@@ -75,4 +76,14 @@ dataSource!: MatTableDataSource<any>;
       }
     });
   }
+
+  showOptions(): boolean {
+    return this.loginService.getUserRole()?.toLowerCase() !== 'no';
+  }
+
+  disableOptions(): boolean {
+    return this.loginService.getUserRole()?.toLowerCase() === 'no';
+  }
+
+
 }

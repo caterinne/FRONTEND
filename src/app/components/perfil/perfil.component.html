@@ -8,8 +8,15 @@
 <body>
     <div>
         <app-header></app-header>
+
         <nav>
-            <p><b>perfil works!</b></p>
+            <div *ngIf="user" class="profile-container">
+                <h1><b>{{ user.name }} {{ user.lastname }}</b></h1>
+                <p><b>Email: </b>{{ user.email }}</p>
+                <p><b>Contraseña: </b>{{ user.password }}</p>
+                <p><b>¿Tiene privilegios?: </b>{{ user.role }}</p>
+                <button   *ngIf="user.role === 'si'" class="center-button" (click)="verUsuarios()">Ver Usuarios</button>
+            </div>
         </nav>
     </div>
 </body>

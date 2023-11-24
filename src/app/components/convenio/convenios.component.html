@@ -73,10 +73,10 @@
           <button mat-icon-button (click)="viewDetails(row)">
             <mat-icon>find_in_page</mat-icon>
           </button>
-          <button mat-icon-button color="primary" (click)="editConveniosForm(row)">
+          <button mat-icon-button color="primary" (click)="editConveniosForm(row)" *ngIf="showOptions()" [attr.disabled]="disableOptions() ? true : null">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="warn" (click)="deleteConvenio(row.ID_Convenio)">
+          <button mat-icon-button color="warn" (click)="deleteConvenio(row.ID_Convenio)" *ngIf="showOptions()" [attr.disabled]="disableOptions() ? true : null">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
@@ -91,7 +91,7 @@
       </tr>
     </table>
   
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
 </body>
 </html>

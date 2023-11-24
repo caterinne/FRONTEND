@@ -12,16 +12,14 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
+export class HeaderComponent{
   constructor(private dialog: MatDialog,  public loginService: LoginService, private router: Router){}
-
+  
   showOptions(): boolean {
-    // Lógica para mostrar o no el select
     return this.loginService.getUserRole()?.toLowerCase() !== 'no';
   }
 
   disableOptions(): boolean {
-    // Lógica para deshabilitar o no el select
     return this.loginService.getUserRole()?.toLowerCase() === 'no';
   }
 
@@ -43,7 +41,6 @@ export class HeaderComponent {
             this.addUsuarioForm();
             break;
         default:
-            // Lógica por defecto si es necesario
             break;
     }
 }
