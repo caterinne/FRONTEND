@@ -1,11 +1,12 @@
-##FALTA POR TERMINAR:
+## FALTA POR TERMINAR:
 
-- Pagina de usuario (Modificar usuario, que el admin pueda acceder a los otros usuarios y modificarlos)(como pagina de user de ds)
+- Falta modificar usuarios por parte del admin y eliminar
 - Implementación de alerta como ventana emergente y enviar al email
 - Implementar mensaje default para que jefe ORI lo envie rapidamente
 - Implementación de generación de informes para Jefe ORI
 - Diseño de la pagina
-- Volver a escuchar audio para sacar más requerimientos
+
+  
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 
 ## Development server
