@@ -17,7 +17,7 @@
                     <option value="convenio">Agregar Convenio</option>
                     <option value="institucion">Agregar Institución</option>
                     <option value="coordinador">Agregar Coordinador</option>
-                    <option value="usuario" *ngIf="loginService.getUserRole() === 'si'">Agregar Usuario</option> 
+                    <option value="usuario" *ngIf="loginService.getUserRole()?.toLowerCase() === 'admin'" >Agregar Usuario</option> 
                 </select>                
             </div>
             <button mat-icon-button [matMenuTriggerFor]="menu">

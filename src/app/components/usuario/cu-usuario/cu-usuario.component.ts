@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/services/usuario.service';
 })
 export class CUUsuarioComponent {
   usuarioForm: FormGroup;
-  privilegios: string[] = ['Si', 'No'];
+  privilegios: string[] = ['Admin', 'User', 'Viewer'];
   constructor(private fb: FormBuilder, private usuarioService: UsuarioService, 
     private dialogRef:MatDialogRef<CUUsuarioComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
   
@@ -21,7 +21,6 @@ export class CUUsuarioComponent {
           contrasena: this.data.contrasena,
           nombre: this.data.nombre,
           apellido: this.data.apellido,
-          vigencia: this.data.vigencia,
           privilegios: this.data.privilegios
         });
     } else {
@@ -31,7 +30,6 @@ export class CUUsuarioComponent {
           contrasena: '',
           nombre: '',
           apellido: '',
-          vigencia: '',
           privilegios: ''
         });
     }

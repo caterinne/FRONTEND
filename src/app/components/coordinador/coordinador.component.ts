@@ -13,7 +13,7 @@ import { LoginService } from 'src/guards/login.service';
   styleUrls: ['./coordinador.component.css']
 })
 export class CoordinadorComponent {
-  displayedColumns: string[] = ['ID_Coordinador','ID_Institucion','Nombre', 'Correo','Tipo_Coordinador', 'Action', 
+  displayedColumns: string[] = ['ID_Institucion','Nombre', 'Correo','Tipo_Coordinador', 'Action', 
 
 ];
 dataSource!: MatTableDataSource<any>;
@@ -78,11 +78,11 @@ dataSource!: MatTableDataSource<any>;
   }
 
   showOptions(): boolean {
-    return this.loginService.getUserRole()?.toLowerCase() !== 'no';
+    return this.loginService.getUserRole()?.toLowerCase() !== 'viewer';
   }
 
   disableOptions(): boolean {
-    return this.loginService.getUserRole()?.toLowerCase() === 'no';
+    return this.loginService.getUserRole()?.toLowerCase() === 'viewer';
   }
 
 

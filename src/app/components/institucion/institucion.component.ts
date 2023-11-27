@@ -13,7 +13,7 @@ import { LoginService } from 'src/guards/login.service';
   styleUrls: ['./institucion.component.css']
 })
 export class InstitucionComponent implements OnInit{
-  displayedColumns: string[] = ['id','Alcance','Nombre_Institucion','Unidad_Academica', 'Pais','Tipo_Institucion', 'Action', 
+  displayedColumns: string[] = ['Alcance','Nombre_Institucion','Unidad_Academica', 'Pais','Tipo_Institucion', 'Action', 
 
 ];
 dataSource!: MatTableDataSource<any>;
@@ -78,10 +78,10 @@ dataSource!: MatTableDataSource<any>;
   }
 
   showOptions(): boolean {
-    return this.loginService.getUserRole()?.toLowerCase() !== 'no';
+    return this.loginService.getUserRole()?.toLowerCase() !== 'viewer';
   }
 
   disableOptions(): boolean {
-    return this.loginService.getUserRole()?.toLowerCase() === 'no';
+    return this.loginService.getUserRole()?.toLowerCase() === 'viewer';
   }
 }

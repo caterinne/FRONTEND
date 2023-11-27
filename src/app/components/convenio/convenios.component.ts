@@ -18,9 +18,9 @@ import { LoginService } from 'src/guards/login.service';
   styleUrls: ['./convenios.component.css']
 })
 export class ConveniosComponent implements OnInit {
-  displayedColumns: string[] = ['ID_Convenio', 'Alcance','Cupos', 'Pais', 'Nombre_Institucion', 
+  displayedColumns: string[] = ['Alcance','Cupos', 'Pais', 'Nombre_Institucion', 
     'Tipo_Convenio', 'Vigencia', 'Nombre_Coordinador',
-    'Correo_Coordinador', 'Tipo_Firma', 'Documentos', 'Action', 
+    'Correo_Coordinador', 'Action', 
 
   ];
   dataSource!: MatTableDataSource<any>;
@@ -55,18 +55,34 @@ export class ConveniosComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
   deleteConvenio(id: number) {
     const isConfirmed = window.confirm(`¿Estás seguro de que deseas eliminar el convenio con ID ${id}?`);
-  
+
     if (isConfirmed) {
-      this.convenio.deleteConvenio(id).subscribe({
-        next: (res) => {
-          alert('Convenio Eliminado');
+      fetch(`http://localhost:3000/api/convenios/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          // Agrega cualquier otro encabezado necesario aquí
         },
-        error: (error) => {
-          alert('No se puede eliminar convenio');
-          window.location.reload();
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error al eliminar convenio');
         }
+        return response.json();
+      })
+      .then(data => {
+        // Aquí puedes manejar la respuesta exitosa si es necesario
+        alert('Convenio Eliminado');
+        this.getConvenioList(); // Actualiza la lista después de la eliminación
+      })
+      .catch(error => {
+        console.error('Error al eliminar convenio:', error);
+        alert('No se puede eliminar convenio');
+        // No necesitas recargar la página automáticamente, pero puedes hacerlo si es necesario
+        // window.location.reload();
       });
     } else {
       alert('Eliminación cancelada');
@@ -94,10 +110,10 @@ export class ConveniosComponent implements OnInit {
   }
 
   showOptions(): boolean {
-    return this.loginService.getUserRole()?.toLowerCase() !== 'no';
+    return this.loginService.getUserRole()?.toLowerCase() !== 'viewer';
   }
 
   disableOptions(): boolean {
-    return this.loginService.getUserRole()?.toLowerCase() === 'no';
+    return this.loginService.getUserRole()?.toLowerCase() === 'viewer';
   }
 }

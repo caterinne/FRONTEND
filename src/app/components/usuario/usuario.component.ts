@@ -13,7 +13,7 @@ import { CUUsuarioComponent } from './cu-usuario/cu-usuario.component';
   styleUrls: ['./usuario.component.css']
 })
 export class UsuarioComponent {
-  displayedColumns: string[] = ['ID_Usuario','Email','Nombre', 'Apellido', 'Privilegios', 'Action',
+  displayedColumns: string[] = ['Email','Nombre', 'Apellido', 'Privilegios', 'Action',
 ];
   dataSource!: MatTableDataSource<any>;
 
@@ -21,7 +21,7 @@ export class UsuarioComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  usuarioLogeado: any;  // Asegúrate de que esta variable esté definida correctamente
+  usuarioLogeado: any;
 
   constructor(private usuario: UsuarioService, private dialog: MatDialog, public loginService: LoginService) {
     this.usuarioLogeado = this.loginService.getSession();

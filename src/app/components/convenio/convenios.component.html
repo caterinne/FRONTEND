@@ -16,69 +16,58 @@
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" matSort>
   
-      <!-- COLUMNA ALCANCE -->
-      <ng-container matColumnDef="ID_Convenio">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.ID_Convenio}} </td>
-      </ng-container>
       <ng-container matColumnDef="Alcance">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Alcance </th>
-        <td mat-cell *matCellDef="let row"> {{row.Alcance}} </td>
+        <td mat-cell *matCellDef="let row" class="column-cell"> {{row.Alcance}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Cupos">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Cupos </th>
-        <td mat-cell *matCellDef="let row"> {{row.Cupos}} </td>
+        <td mat-cell *matCellDef="let row" class="column-cell"> {{row.Cupos}} </td>
       </ng-container>
   
       <!-- Progress Column -->
       <ng-container matColumnDef="Pais">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> País </th>
-        <td mat-cell *matCellDef="let row"> {{row.Pais}} </td>
+        <td mat-cell *matCellDef="let row" class="column-cell"> {{row.Pais}} </td>
       </ng-container>
       <ng-container matColumnDef="Nombre_Institucion">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Institución </th>
-        <td mat-cell *matCellDef="let row"> {{row.Nombre_Institucion}} </td>
+        <td mat-cell *matCellDef="let row" class="column-cell"> {{row.Nombre_Institucion}} </td>
       </ng-container>
       <ng-container matColumnDef="Tipo_Convenio">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Convenio </th>
-        <td mat-cell *matCellDef="let row"> {{row.Tipo_Convenio}} </td>
+        <td mat-cell *matCellDef="let row" class="column-cell"> {{row.Tipo_Convenio}} </td>
       </ng-container>
       <ng-container matColumnDef="Vigencia">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Vigencia </th>
-        <td mat-cell *matCellDef="let row"> {{row.Vigencia | date}} </td>
+        <td mat-cell *matCellDef="let row" class="column-cell"> {{row.Vigencia |date}} </td>
       </ng-container>
       <ng-container matColumnDef="Nombre_Coordinador">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Coordinador </th>
-        <td mat-cell *matCellDef="let row"> {{row.Nombre_Coordinador}} </td>
+        <td mat-cell *matCellDef="let row" class="column-cell"> {{row.Nombre_Coordinador}} </td>
       </ng-container>
       <!-- Name Column -->
       <ng-container matColumnDef="Correo_Coordinador">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo Coordinador </th>
-        <td mat-cell *matCellDef="let row"> {{row.Correo_Coordinador}} </td>
-      </ng-container>
-      <ng-container matColumnDef="Tipo_Firma">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Firma </th>
-        <td mat-cell *matCellDef="let row"> {{row.Tipo_Firma}} </td>
-      </ng-container>
-      <ng-container matColumnDef="Documentos">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Documentos </th>
-        <td mat-cell *matCellDef="let row"> {{row.Documentos}} </td>
+        <td mat-cell *matCellDef="let row" class="column-cell"> {{row.Correo_Coordinador}} </td>
       </ng-container>
 
 
       <ng-container matColumnDef="Action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let row">
-          <button mat-icon-button (click)="viewDetails(row)">
-            <mat-icon>find_in_page</mat-icon>
-          </button>
-          <button mat-icon-button color="primary" (click)="editConveniosForm(row)" *ngIf="showOptions()" [attr.disabled]="disableOptions() ? true : null">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" (click)="deleteConvenio(row.ID_Convenio)" *ngIf="showOptions()" [attr.disabled]="disableOptions() ? true : null">
-            <mat-icon>delete</mat-icon>
-          </button>
+          <div class="button-container">
+            <button mat-icon-button  class="mat-button" (click)="viewDetails(row)">
+              <mat-icon>find_in_page</mat-icon>
+            </button>
+            <button mat-icon-button  class="mat-button" color="primary" (click)="editConveniosForm(row)" *ngIf="showOptions()" [attr.disabled]="disableOptions() ? true : null">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button  class="mat-button" color="warn" (click)="deleteConvenio(row.ID_Convenio)" *ngIf="showOptions()" [attr.disabled]="disableOptions() ? true : null">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </td>
       </ng-container>
 

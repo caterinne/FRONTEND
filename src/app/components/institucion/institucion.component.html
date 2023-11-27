@@ -18,11 +18,6 @@
         <div class="table-container">
             <table mat-table [dataSource]="dataSource" matSort>
           
-            <!-- COLUMNA ALCANCE -->
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-            </ng-container>
             <ng-container matColumnDef="Alcance">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Alcance </th>
                 <td mat-cell *matCellDef="let row"> {{row.Alcance}} </td>

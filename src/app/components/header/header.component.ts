@@ -16,11 +16,11 @@ export class HeaderComponent{
   constructor(private dialog: MatDialog,  public loginService: LoginService, private router: Router){}
   
   showOptions(): boolean {
-    return this.loginService.getUserRole()?.toLowerCase() !== 'no';
+    return this.loginService.getUserRole()?.toLowerCase() !== 'viewer';
   }
 
   disableOptions(): boolean {
-    return this.loginService.getUserRole()?.toLowerCase() === 'no';
+    return this.loginService.getUserRole()?.toLowerCase() === 'viewer';
   }
 
 
