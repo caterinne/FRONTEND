@@ -41,7 +41,7 @@
       </ng-container>
       <ng-container matColumnDef="Vigencia">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Vigencia </th>
-        <td mat-cell *matCellDef="let row" class="column-cell"> {{row.Vigencia |date}} </td>
+        <td mat-cell *matCellDef="let row" class="column-cell"> {{row.Vigencia |date:'d MMMM yyyy '}} </td>
       </ng-container>
       <ng-container matColumnDef="Nombre_Coordinador">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Coordinador </th>

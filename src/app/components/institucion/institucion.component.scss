@@ -1,0 +1,39 @@
+/* Estilo para la tabla */
+.body table {
+  width: 100%;
+}
+
+.body td,
+.body th {
+  width: 15%;
+  background-color: #f4f5f9;
+}
+
+/* Estilo para los campos de formulario */
+.mat-mdc-form-field,
+.mat-form-field,
+.buscar {
+  font-size: 12px;
+  width: 100%;
+  -webkit-width: 100%;
+  -moz-width: 100%;
+  -ms-width: 100%;
+}
+
+.icon-cell {
+  display: flex;
+  align-items: center; /* Centra los elementos verticalmente en la celda */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row; /* Asegura que los botones estén en una fila */
+}
+.mat-mdc-paginator{
+    background-color: #f4f5f9;
+}
+.titulo{
+  font-size: 20px;
+  text-align: center;
+  padding-bottom: 10px;
+}

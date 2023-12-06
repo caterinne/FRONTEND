@@ -6,6 +6,7 @@
 .body td,
 .body th {
   width: 15%;
+  background-color: #f4f5f9;
 }
 
 /* Estilo para los campos de formulario */
@@ -28,5 +29,6 @@
   display: flex;
   flex-direction: row; /* Asegura que los botones estén en una fila */
 }
-
-
+.mat-mdc-paginator{
+    background-color: #f4f5f9;
+}

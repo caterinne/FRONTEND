@@ -1,8 +1,12 @@
 ## FALTA POR TERMINAR:
 
+- Diseñar los agregar
+- Diseñar detalle convenios
+- Diseñar perfil usuario
+- Implementar el mostrar y ocultar contraseña en perfil de usuario
 - Falta modificar usuarios por parte del admin y eliminar
-- Implementación de alerta como ventana emergente y enviar al email
-- Implementar mensaje default para que jefe ORI lo envie rapidamente
+- Implementación de alerta como ventana emergente y enviar al email (SI ES QUE ALCANZAMOS)
+- Implementar mensaje default para que jefe ORI lo envie rapidamente (SI ES QUE ALCANZAMOS)
 - Implementación de generación de informes para Jefe ORI
 - Diseño de la pagina
 

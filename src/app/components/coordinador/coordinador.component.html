@@ -9,14 +9,14 @@
     <div>
         <app-header></app-header>
     </div>
-    <div>
+    <div class="convenios">
         <mat-form-field>
             <mat-label>Buscar por nombre, tipo coordinador ... </mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese desde tres letras" #input>
         </mat-form-field>
         <div class="titulo"> <b>COORDINADORES</b></div>
         <div class="table-container">
-            <table mat-table [dataSource]="dataSource" matSort>
+            <table mat-table [dataSource]="dataSource" matSort class="tabla">
                 
             <ng-container matColumnDef="ID_Institucion">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> ID Institucion </th>

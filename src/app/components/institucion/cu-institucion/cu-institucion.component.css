@@ -2,7 +2,7 @@
     display: flex;
     gap: 10px;
     
-    mat-form-field{
+    .mat-form-field{
        width: 100%; 
     }
 }
@@ -24,6 +24,6 @@
 
 .title{
     h1{
-        text-align: center;
+        text-align: center !important;
     }
 }

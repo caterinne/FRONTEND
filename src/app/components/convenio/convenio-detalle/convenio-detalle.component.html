@@ -13,8 +13,8 @@
           <h1>{{data.Nombre_Convenio}} ID: {{data.ID_Convenio}}</h1>
 
           <p>Tipo de convenio: {{ data.Tipo_Convenio }} </p>
-          <p>Vigencia: {{ data.Vigencia }} </p>
-          <p>Año de firma: {{ data.Anio_Firma }} </p>
+          <p>Vigencia: {{ data.Vigencia |date:'d MMMM yyyy '}} </p>
+          <p>Año de firma: {{ data.Anio_Firma |date:'d MMMM yyyy '}} </p>
           <p>Tipo de firma: {{ data.Tipo_Firma }} </p>
           <p>Cupos: {{ data.Cupos }} </p>
           <p>Documentos: {{ data.Documentos }} </p>

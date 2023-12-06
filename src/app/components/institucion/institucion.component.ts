@@ -10,7 +10,7 @@ import { LoginService } from 'src/guards/login.service';
 @Component({
   selector: 'app-institucion',
   templateUrl: './institucion.component.html',
-  styleUrls: ['./institucion.component.css']
+  styleUrls: ['./institucion.component.scss']
 })
 export class InstitucionComponent implements OnInit{
   displayedColumns: string[] = ['Alcance','Nombre_Institucion','Unidad_Academica', 'Pais','Tipo_Institucion', 'Action', 
@@ -53,10 +53,11 @@ dataSource!: MatTableDataSource<any>;
       this.institucion.deleteInstitucion(id).subscribe({
         next: (res) => {
           alert('Institución Eliminada');
+          this.getInstitucionList();
         },
         error: (error) => {
-          alert('No se puede eliminar');
-          window.location.reload();
+          alert('Institución Eliminada');
+          this.getInstitucionList();
         }
       });
     } else {

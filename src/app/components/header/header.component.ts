@@ -22,47 +22,65 @@ export class HeaderComponent{
   disableOptions(): boolean {
     return this.loginService.getUserRole()?.toLowerCase() === 'viewer';
   }
-
-
-  handleSelectChange(event: Event): void {
-    const selectedOption = (event.target as HTMLSelectElement).value;
-    
-    switch (selectedOption) {
-        case 'convenio':
-            this.addConveniosForm();
-            break;
-        case 'institucion':
-            this.addInstitucionForm();
-            break;
-        case 'coordinador':
-            this.addCoordinadorForm();
-            break;
-        case 'usuario':
-            this.addUsuarioForm();
-            break;
-        default:
-            break;
+  selectedOption: string = '';
+  handleSelectChange(option: string): void {
+    console.log('Se ha llamado agregar', option);
+    this.selectedOption = option;
+    switch (option) {
+      case 'Convenio':
+        this.addConveniosForm();
+        break;
+      case 'Institucion':
+        this.addInstitucionForm();
+        break;
+      case 'Coordinador':
+        this.addCoordinadorForm();
+        break;
+      case 'Usuario':
+        this.addUsuarioForm();
+        break;
+      default:
+        console.warn('Opción no reconocida:', option);
     }
-}
+  }
+  
+  handleDialogClose(): void {
+    this.selectedOption = ''; // Restablecer selectedOption al cerrar cualquier diálogo
+  }
+  
+  
+  
 
   addConveniosForm(){
-    console.log('addConveniosForm called');
-    this.dialog.open(CUConvenioComponent);
+    const dialogRef = this.dialog.open(CUConvenioComponent);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.handleDialogClose();
+    });
   }
 
   addInstitucionForm(){
-    console.log('addInstitucionForm called');
-    this.dialog.open(CUInstitucionComponent);
+    const dialogRef = this.dialog.open(CUInstitucionComponent);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.handleDialogClose();
+    });
   }
 
   addCoordinadorForm(){
-    console.log('addCoordinadorForm called');
-    this.dialog.open(CUCoordinadorComponent);
+    const dialogRef = this.dialog.open(CUCoordinadorComponent);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.handleDialogClose();
+    });
   }
 
   addUsuarioForm(){
-    console.log('addUsuarioForm called');
-    this.dialog.open(CUUsuarioComponent);
+    const dialogRef = this.dialog.open(CUUsuarioComponent);
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.handleDialogClose();
+    });
   }
 
   goMainPage() {

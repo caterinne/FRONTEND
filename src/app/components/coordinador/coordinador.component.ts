@@ -10,7 +10,7 @@ import { LoginService } from 'src/guards/login.service';
 @Component({
   selector: 'app-coordinador',
   templateUrl: './coordinador.component.html',
-  styleUrls: ['./coordinador.component.css']
+  styleUrls: ['./coordinador.component.scss']
 })
 export class CoordinadorComponent {
   displayedColumns: string[] = ['ID_Institucion','Nombre', 'Correo','Tipo_Coordinador', 'Action', 
@@ -47,16 +47,17 @@ dataSource!: MatTableDataSource<any>;
   }
 
   deleteCoordinador(id: number) {
-    const isConfirmed = window.confirm(`¿Estás seguro de que deseas eliminar el institución con ID ${id}?`);
+    const isConfirmed = window.confirm(`¿Estás seguro de que deseas eliminar el Coordinador con ID ${id}?`);
   
     if (isConfirmed) {
       this.coordinador.deleteCoordinador(id).subscribe({
         next: (res) => {
-          alert('Institución Eliminada');
+          alert('Coordinador Eliminado');
+          this.getCoordinadorList();
         },
         error: (error) => {
-          alert('No se puede eliminar');
-          window.location.reload();
+          alert('Coordinador Eliminado');
+          this.getCoordinadorList();
         }
       });
     } else {

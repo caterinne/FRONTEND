@@ -2,8 +2,8 @@
 
 header {
     display: flex;
-    justify-content: space-between; /* Esto crea un espacio entre los elementos horizontalmente, con los div*/
-    align-items: center; /* Esto centra los elementos verticalmente */
+    justify-content: space-between;
+    align-items: center; 
     min-height: 70px;
     background-color: #253e85;
 }
@@ -55,62 +55,25 @@ nav{
     }
 }
 
-option {
-    font-size: 16px;
-}
-
 mat-icon{
     color: white;
 }
 
-
-.custom-select {
-    min-width: 100px;
-    position: relative;
-    width: 100%;
-    padding-right: 15px;
-
-  
-  select {
-    appearance: none;
-    /*  safari  */
-    -webkit-appearance: none;
-    /*  other styles for aesthetics */
-    border-radius: 30px;
+.custom-button {
+    min-width: 150px;
+    border-radius: 10px;
+    border: 2px solid white;
+    border-color: white !important;
     background-color: #253e85;
-    border: 2px solid #ffffff; /* Añadimos un borde sólido de 2px */
-    padding: 5px 35px;
-    padding-left: 10px;
-    color:white;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-
-    cursor: pointer;
-    transition: border-color 0.3s; /* Agregamos una transición para el color del borde */
-  }
-  
-  .custom-select::before,
-  .custom-select::after {
-    --size: 0.3rem;
-    content: "";
-    position: absolute;
-    right: 1rem;
-    pointer-events: none;
-
-  }
-  
-  .custom-select::before {
-    border-left: var(--size) solid transparent;
-    border-right: var(--size) solid transparent;
-    border-bottom: var(--size) solid rgb(255, 255, 255);
-    top: 30%;
-  }
-  
-  .custom-select::after {
-    border-left: var(--size) solid transparent;
-    border-right: var(--size) solid transparent;
-    border-top: var(--size) solid rgb(255, 255, 255);
-    top: 55%;
-  }
+    color: white !important; 
+    flex-direction: row-reverse;
+    padding-left: 20px;
+    margin-right: 15px;
 }
+  
+.custom-button mat-icon {
+    margin-left: auto;
+}
+
+    
+  

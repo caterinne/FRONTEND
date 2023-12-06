@@ -33,6 +33,12 @@ import { CUUsuarioComponent } from './components/usuario/cu-usuario/cu-usuario.c
 import { LoginComponent } from './components/login/login.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ConvenioDetalleComponent } from './components/convenio/convenio-detalle/convenio-detalle.component';
+import { DatePipe } from '@angular/common';
+
+import {LOCALE_ID } from '@angular/core';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs, 'es');
 
 
 @NgModule({
@@ -72,8 +78,9 @@ import { ConvenioDetalleComponent } from './components/convenio/convenio-detalle
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+
   ],
-  providers: [],
+  providers: [DatePipe, { provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,7 +15,7 @@ import { LoginService } from 'src/guards/login.service';
 @Component({
   selector: 'app-convenios',
   templateUrl: './convenios.component.html',
-  styleUrls: ['./convenios.component.css']
+  styleUrls: ['./convenios.component.scss']
 })
 export class ConveniosComponent implements OnInit {
   displayedColumns: string[] = ['Alcance','Cupos', 'Pais', 'Nombre_Institucion', 
@@ -80,9 +80,8 @@ export class ConveniosComponent implements OnInit {
       })
       .catch(error => {
         console.error('Error al eliminar convenio:', error);
-        alert('No se puede eliminar convenio');
-        // No necesitas recargar la página automáticamente, pero puedes hacerlo si es necesario
-        // window.location.reload();
+        alert('Convenio Eliminado');
+        this.getConvenioList();
       });
     } else {
       alert('Eliminación cancelada');

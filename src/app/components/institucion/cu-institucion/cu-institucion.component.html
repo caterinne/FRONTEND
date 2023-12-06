@@ -3,35 +3,38 @@
 </div>
 <form [formGroup]="institucionForm" (ngSubmit)="onFormSubmit()">
     <div class="content">
-        <div>
-            <div class="row">
-                <div>
-                    <label>Nombre Institución</label>
-                    <input type="text" placeholder="Ejemplo" formControlName="nombre_inst">
-                </div>
-                <div>
-                    <label>Pais</label>
-                    <input type="text" placeholder="Ejemplo" formControlName="pais">
-                </div>
-                <div>
-                    <label>Tipo Institución</label>
-                    <input type="text" placeholder="Ejemplo" formControlName="tipo_institucion">
-                </div>
-            </div>
-            <div class="row">
-                <div>
-                    <label>Unidad Academica</label>
-                    <input type="text" placeholder="Ejemplo" formControlName="unidad_academica">
-                </div>
-                <div>
-                    <label>Alcance</label>
-                    <input type="text" placeholder="Ejemplo" formControlName="alcance">
-                </div>
-            </div>
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre Institución</mat-label>
+            <input matInput formControlName="nombre_inst" placeholder="Ejemplo">
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Pais</mat-label>
+            <input matInput formControlName="pais" placeholder="Ejemplo">
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo Institución</mat-label>
+            <input matInput formControlName="tipo_institucion" placeholder="Ejemplo">
+          </mat-form-field>
         </div>
-    </div>
-    <div class="action">
-        <button type="button" [mat-dialog-close]="false"> Cancelar </button>
-        <button type="submit">{{data ? 'Actualizar Institución' : 'Agregar Institución'}}</button>
-    </div>
+    
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Unidad Academica</mat-label>
+            <input matInput formControlName="unidad_academica" placeholder="Ejemplo">
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline">
+            <mat-label>Alcance</mat-label>
+            <input matInput formControlName="alcance" placeholder="Ejemplo">
+          </mat-form-field>
+        </div>
+      </div>
+    
+      <div class="action">
+        <button mat-button [mat-dialog-close]="false" color="warn"> Cancelar </button>
+        <button mat-raised-button type="submit" color="primary">{{data ? 'Actualizar Institución' : 'Agregar Institución'}}</button>
+      </div>
 </form>

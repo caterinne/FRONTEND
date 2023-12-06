@@ -4,27 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
         <div>
             <img (click)="goMainPage()" id="logo" title="Inicio" src="../../../assets/LOGO_ORI2.png" width="150" alt="Logo de ORI">
         </div>
-        <nav>
-            <div class="custom-select">
-                <select *ngIf="showOptions()" [attr.disabled]="disableOptions() ? true : null" (change)="handleSelectChange($event)">
-                    <option>Opciones para agregar &#9660;</option>
-                    <option value="convenio">Agregar Convenio</option>
-                    <option value="institucion">Agregar Institución</option>
-                    <option value="coordinador">Agregar Coordinador</option>
-                    <option value="usuario" *ngIf="loginService.getUserRole()?.toLowerCase() === 'admin'" >Agregar Usuario</option> 
-                </select>                
+        <nav> 
+            <div class="container" *ngIf="showOptions()">
+                <button mat-button [matMenuTriggerFor]="menu" class="custom-button" [attr.disabled]="disableOptions() ? true : null">
+                    <mat-icon>arrow_drop_down</mat-icon>
+                    {{ selectedOption || 'Agregar' }}
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="handleSelectChange('Convenio')">Convenio</button>
+                    <button mat-menu-item (click)="handleSelectChange('Institucion')">Institución</button>
+                    <button mat-menu-item (click)="handleSelectChange('Coordinador')">Coordinador</button>
+                    <button mat-menu-item *ngIf="loginService.getUserRole()?.toLowerCase() === 'admin'" (click)="handleSelectChange('Usuario')">Usuario</button>
+                  </mat-menu>
             </div>
-            <button mat-icon-button [matMenuTriggerFor]="menu">
+            <button mat-icon-button [matMenuTriggerFor]="menu2">
                 <mat-icon>more_vert</mat-icon>
             </button>
               
-              <mat-menu #menu="matMenu">
+              <mat-menu #menu2="matMenu">
                 <button mat-menu-item (click)="irAPagina('institucion')">Mostrar Instituciones</button>
                 <button mat-menu-item (click)="irAPagina('coordinador')">Mostrar Coordinadores</button>
               </mat-menu>
@@ -32,5 +36,6 @@
             <img (click)="logout()" class="logout" title="Cerrar Sesión" src="../../../assets/Logout.png" alt="Logout" width="30"> 
         </nav>
     </header>
+<script src="/index.js"></script>
 </body>
 </html>
