@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CoordinadorService } from 'src/services/coordinador.service';
 import { CUCoordinadorComponent } from './cu-coordinador/cu-coordinador.component';
 import { LoginService } from 'src/guards/login.service';
+import { CoreService } from 'src/app/core/core.service';
 
 @Component({
   selector: 'app-coordinador',
@@ -23,7 +24,7 @@ dataSource!: MatTableDataSource<any>;
   ngOnInit(): void {
     this.getCoordinadorList();
   }
-  constructor(private coordinador: CoordinadorService, private dialog: MatDialog, public loginService: LoginService){}
+  constructor(private coordinador: CoordinadorService, private dialog: MatDialog, public loginService: LoginService, private coreService: CoreService){}
 
   getCoordinadorList(){
     this.coordinador.getCoordinadorList().subscribe({
@@ -52,11 +53,11 @@ dataSource!: MatTableDataSource<any>;
     if (isConfirmed) {
       this.coordinador.deleteCoordinador(id).subscribe({
         next: (res) => {
-          alert('Coordinador Eliminado');
+          this.coreService.openSnackBar('Coordinador eliminado', 'Aceptar');
           this.getCoordinadorList();
         },
         error: (error) => {
-          alert('Coordinador Eliminado');
+          this.coreService.openSnackBar('Coordinador eliminado', 'Aceptar');
           this.getCoordinadorList();
         }
       });

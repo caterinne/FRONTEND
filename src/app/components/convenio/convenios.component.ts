@@ -9,6 +9,7 @@ import { CUConvenioComponent } from './cu-convenio/cu-convenio.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/guards/login.service';
+import { CoreService } from 'src/app/core/core.service';
 
 
 
@@ -31,7 +32,7 @@ export class ConveniosComponent implements OnInit {
   ngOnInit(): void {
     this.getConvenioList();
   }
-  constructor(private convenio: ConvenioService, private dialog: MatDialog, private router: Router, public loginService: LoginService){}
+  constructor(private convenio: ConvenioService, private dialog: MatDialog, private router: Router, public loginService: LoginService, private coreService: CoreService){}
 
   getConvenioList(){
     this.convenio.getConvenioList().subscribe({
@@ -75,12 +76,12 @@ export class ConveniosComponent implements OnInit {
       })
       .then(data => {
         // Aquí puedes manejar la respuesta exitosa si es necesario
-        alert('Convenio Eliminado');
+        this.coreService.openSnackBar('Convenio eliminado', 'Aceptar');
         this.getConvenioList(); // Actualiza la lista después de la eliminación
       })
       .catch(error => {
         console.error('Error al eliminar convenio:', error);
-        alert('Convenio Eliminado');
+        this.coreService.openSnackBar('Convenio eliminado', 'Aceptar');
         this.getConvenioList();
       });
     } else {

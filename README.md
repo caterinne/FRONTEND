@@ -1,13 +1,12 @@
 ## FALTA POR TERMINAR:
 
-- Diseñar detalle convenios (hacer el 07-12)
-- Diseñar perfil usuario (hacer el 07-12)
-- Diseñar snackbar para alertas (hacer el 07-12)
 - Implementar los estados para las vigencias. Ejemplo: caducado, activo, renovando (hacer el 08-12)
 - Implementar el mostrar y ocultar contraseña en perfil de usuario (hacer el 08-12)
-- Arreglar los delete (hacer el 09-12)
-- Implementar el logo de la ucm a todas las pestañas y ponerle nombres (hacer el 09-12)
 - Falta modificar usuarios por parte del admin y eliminar (hacer el 08-12)
+- Diseñar perfil usuario (hacer el 09-12)
+- Arreglar los delete (hacer el 09-12)
+- Agregar close y back a las páginas (hacer el 10-12)
+
 - Implementación de alerta como ventana emergente y enviar al email (SI ES QUE ALCANZAMOS)
 - Implementar mensaje default para que jefe ORI lo envie rapidamente (SI ES QUE ALCANZAMOS)
 - Implementación de generación de informes para Jefe ORI

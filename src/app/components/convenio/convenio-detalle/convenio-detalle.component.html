@@ -8,26 +8,73 @@
 <body>
     <div>
         <app-header></app-header>
-
-        <nav class = "detalle" id="detalle">
-          <h1>{{data.Nombre_Convenio}} ID: {{data.ID_Convenio}}</h1>
-
-          <p>Tipo de convenio: {{ data.Tipo_Convenio }} </p>
-          <p>Vigencia: {{ data.Vigencia |date:'d MMMM yyyy '}} </p>
-          <p>Año de firma: {{ data.Anio_Firma |date:'d MMMM yyyy '}} </p>
-          <p>Tipo de firma: {{ data.Tipo_Firma }} </p>
-          <p>Cupos: {{ data.Cupos }} </p>
-          <p>Documentos: {{ data.Documentos }} </p>
-          <p>Alcance: {{data.alcance}}</p>
-          <p>Nombre coordinador: {{data.Nombre_Coordinador}}</p>
-          <p>Correo coordinador: {{data.Correo_Coordinador}}</p>
-          <p>Nombre institucion: {{data.Nombre_Institucion}}</p>
-          <p>Pais: {{data.Pais}}</p>
-          <p>Tipo convenio: {{data.Tipo_Convenio}}</p>
-          <p>Tipo coordinador: {{data.Tipo_Coordinador}}</p>
-          <p>Tipo institucion: {{data.Tipo_Institucion}}</p>
-          <p>Unidad academica: {{data.Unidad_Academica}}</p>
-        </nav>
+        <div class="tabla">
+            <table>
+                <tr>
+                  <th colspan="2">{{data.Nombre_Convenio}}</th>
+                </tr>
+                <tr>
+                    <td><div><b>Tipo de convenio</b></div></td>
+                    <td>{{ data.Tipo_Convenio }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Vigencia</b></div></td>
+                    <td>{{ data.Vigencia | date:'d MMMM yyyy' }}</td>
+                  </tr>
+                <tr>
+                    <td><div><b>Fecha de firma</b></div></td>
+                    <td>{{ data.Anio_Firma | date:'d MMMM yyyy' }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Tipo de firma</b></div></td>
+                    <td>{{ data.Tipo_Firma }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Cupos</b></div></td>
+                    <td>{{ data.Cupos }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Documentos</b></div></td>
+                    <td>{{ data.Documentos }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Alcance</b></div></td>
+                    <td>{{ data.Alcance }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Nombre de Coordinador</b></div></td>
+                    <td>{{ data.Nombre_Coordinador }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Correo de coordinador</b></div></td>
+                    <td>{{ data.Correo_Coordinador }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Institución</b></div></td>
+                    <td>{{ data.Nombre_Institucion }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>País</b></div></td>
+                    <td>{{ data.Pais }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Tipo de convenio</b></div></td>
+                    <td>{{ data.Tipo_Convenio }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Tipo de coordinador</b></div></td>
+                    <td>{{ data.Tipo_Coordinador }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Tipo de Institución</b></div></td>
+                    <td>{{ data.Tipo_Institucion }}</td>
+                </tr>
+                <tr>
+                    <td><div><b>Unidad Académica</b></div></td>
+                    <td>{{ data.Unidad_Academica }}</td>
+                </tr>
+              </table>
+        </div>       
     </div>
 </body>
 </html>

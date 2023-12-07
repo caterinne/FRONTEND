@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
+import { CoreService } from 'src/app/core/core.service';
 
 interface Institucion {
   ID_Institucion: number;
@@ -53,7 +54,7 @@ export class CUConvenioComponent implements OnInit {
     private dialogRef: MatDialogRef<CUConvenioComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private http: HttpClient,
-    private datePipe: DatePipe, private cdRef: ChangeDetectorRef
+    private datePipe: DatePipe, private cdRef: ChangeDetectorRef, private coreService: CoreService
   ) {
     this.formulario = this.fb.group({
       id_institucion: '',
@@ -141,12 +142,12 @@ private async updateCoordinadoresOptions(selectedInstitucionId: any): Promise<vo
     console.log(this.formulario.value);
     this.http.post('http://localhost:3000/api/convenios', this.formulario.value).subscribe(
       (data) => {
-        alert('CONVENIO INGRESADO');
+        this.coreService.openSnackBar('Convenio creado', 'Aceptar');
         this.dialogRef.close(true);
         window.location.reload();
       },
       (error) => {
-        alert('ERROR AL INGRESAR CONVENIO');
+        this.coreService.openSnackBar('Error al crear convenio', 'Aceptar');
         console.error(error);
       });
   }

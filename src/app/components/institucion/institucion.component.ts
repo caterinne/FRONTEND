@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { InstitucionService } from 'src/services/institucion.service';
 import { CUInstitucionComponent } from './cu-institucion/cu-institucion.component';
 import { LoginService } from 'src/guards/login.service';
+import { CoreService } from 'src/app/core/core.service';
 
 @Component({
   selector: 'app-institucion',
@@ -23,7 +24,7 @@ dataSource!: MatTableDataSource<any>;
   ngOnInit(): void {
     this.getInstitucionList();
   }
-  constructor(private institucion: InstitucionService, private dialog: MatDialog, public loginService: LoginService){}
+  constructor(private institucion: InstitucionService, private dialog: MatDialog, public loginService: LoginService, private coreService: CoreService){}
 
   getInstitucionList(){
     this.institucion.getInstitucionList().subscribe({
@@ -52,11 +53,11 @@ dataSource!: MatTableDataSource<any>;
     if (isConfirmed) {
       this.institucion.deleteInstitucion(id).subscribe({
         next: (res) => {
-          alert('Institución Eliminada');
+          this.coreService.openSnackBar('Institución eliminada', 'Aceptar');
           this.getInstitucionList();
         },
         error: (error) => {
-          alert('Institución Eliminada');
+          this.coreService.openSnackBar('Institución eliminada', 'Aceptar');
           this.getInstitucionList();
         }
       });

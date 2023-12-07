@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CoreService } from 'src/app/core/core.service';
 import { UsuarioService } from 'src/services/usuario.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class CUUsuarioComponent {
   usuarioForm: FormGroup;
   privilegios: string[] = ['Admin', 'User', 'Viewer'];
   constructor(private fb: FormBuilder, private usuarioService: UsuarioService, 
-    private dialogRef:MatDialogRef<CUUsuarioComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+    private dialogRef:MatDialogRef<CUUsuarioComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private coreService: CoreService) {
   
     // Verificación para asegurarse de que this.data no sea null
     if (this.data) {
@@ -45,7 +46,7 @@ export class CUUsuarioComponent {
       if(this.data){
         this.usuarioService.updateUsuario(this.data.ID_Institucion,this.usuarioForm.value).subscribe({
           next: (val:any) => {
-            alert('Institución actualizada');
+            this.coreService.openSnackBar('Usuario Actualizado', 'Aceptar');
             this.dialogRef.close(true);
           },
           error: (err: any) => {
@@ -56,7 +57,7 @@ export class CUUsuarioComponent {
         this.usuarioService.addUsuario(this.usuarioForm.value).subscribe({
           next: (val: any) => {
             console.log('Respuesta del servidor (addConvenio):', val);
-            alert('Institución creada con éxito. ID: ' + val.id_usuario);
+            this.coreService.openSnackBar(('Usuario ' + val.nombre + ' ' + val.apellido + ' creado'), 'Aceptar');
             this.dialogRef.close(true);
           },
           error: (err: any) => {

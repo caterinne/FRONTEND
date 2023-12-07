@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { LoginService } from 'src/guards/login.service';
 import { UsuarioService } from 'src/services/usuario.service';
 import { CUUsuarioComponent } from './cu-usuario/cu-usuario.component';
+import { CoreService } from 'src/app/core/core.service';
 
 @Component({
   selector: 'app-usuario',
@@ -23,7 +24,7 @@ export class UsuarioComponent {
 
   usuarioLogeado: any;
 
-  constructor(private usuario: UsuarioService, private dialog: MatDialog, public loginService: LoginService) {
+  constructor(private usuario: UsuarioService, private dialog: MatDialog, public loginService: LoginService, private coreService: CoreService) {
     this.usuarioLogeado = this.loginService.getSession();
   }
 
@@ -62,10 +63,10 @@ export class UsuarioComponent {
     if (isConfirmed) {
       this.usuario.deleteUsuario(id).subscribe({
         next: (res) => {
-          alert('Usuario Eliminado');
+          this.coreService.openSnackBar('Usuario eliminado', 'Aceptar');
         },
         error: (error) => {
-          alert('No se puede eliminar');
+          this.coreService.openSnackBar('Usuario eliminado', 'Aceptar');
           window.location.reload();
         }
       });

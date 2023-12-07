@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CoreService } from 'src/app/core/core.service';
 import { CoordinadorService } from 'src/services/coordinador.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class CUCoordinadorComponent implements OnInit {
   tipoCord: string[] = ['Interno', 'Externo'];
 
   constructor(private fb: FormBuilder, private coordinadorService: CoordinadorService, 
-    private dialogRef:MatDialogRef<CUCoordinadorComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient) {
+    private dialogRef:MatDialogRef<CUCoordinadorComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient, private coreService: CoreService) {
   
     // Verificación para asegurarse de que this.data no sea null
     if (this.data) {
@@ -50,11 +51,11 @@ export class CUCoordinadorComponent implements OnInit {
       if(this.data){
         this.coordinadorService.updateCoordinador(this.data.ID_Institucion,this.coordinadorForm.value).subscribe({
           next: (val:any) => {
-            alert('Coordindaor actualizado');
+            this.coreService.openSnackBar('Coordinador actualizado', 'Aceptar');
             this.dialogRef.close(true);
           },
           error: (err: any) => {
-            alert('Error en actualizar Coordinador');
+            this.coreService.openSnackBar('Error en actualizar coordinador', 'Aceptar');
             console.error(err);
             this.dialogRef.close(true);
           }
@@ -64,7 +65,7 @@ export class CUCoordinadorComponent implements OnInit {
           next: (val: any) => {
             id_institucion: this.idInstituciones[this.optionsInstituciones.indexOf(this.coordinadorForm.value.id_institucion)]
             console.log('Respuesta del servidor (addCoordinador):', val);
-            alert('Coordinador creado con éxito. ID: ' + val.id_coordinador);
+            this.coreService.openSnackBar('Coordinador creado', 'Aceptar');
             this.dialogRef.close(true);
             window.location.reload();
           },

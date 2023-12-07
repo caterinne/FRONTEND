@@ -33,6 +33,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ConvenioDetalleComponent } from './components/convenio/convenio-detalle/convenio-detalle.component';
 import { DatePipe } from '@angular/common';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import {LOCALE_ID } from '@angular/core';
 import localeEs from '@angular/common/locales/es';
@@ -78,6 +79,7 @@ registerLocaleData(localeEs, 'es');
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSnackBarModule
 
   ],
   providers: [DatePipe, { provide: LOCALE_ID, useValue: 'es' }],
