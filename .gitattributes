@@ -1,0 +1,5 @@
+# Desactivar la conversión automática para todos los archivos
+* -text
+
+# Pero habilitarla solo para archivos específicos que necesitan CRLF
+*.sln text eol=crlf
