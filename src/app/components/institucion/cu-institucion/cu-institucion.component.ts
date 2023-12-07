@@ -6,7 +6,7 @@ import { InstitucionService } from 'src/services/institucion.service';
 @Component({
   selector: 'app-cu-institucion',
   templateUrl: './cu-institucion.component.html',
-  styleUrls: ['./cu-institucion.component.css']
+  styleUrls: ['./cu-institucion.component.scss']
 })
 export class CUInstitucionComponent implements OnInit{
   institucionForm: FormGroup;

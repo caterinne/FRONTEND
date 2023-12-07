@@ -2,38 +2,38 @@
     <h1><b>Usuario</b></h1>
 </div>
 <form [formGroup]="usuarioForm" (ngSubmit)="onFormSubmit()">
-    <div class="content">
+    <div mat-dialog-content class="content">
         <div>
             <div class="row">
-                <div>
-                    <label>Nombre</label>
-                    <input type="text" placeholder="Ejemplo" formControlName="nombre">
-                </div>
-                <div>
-                    <label>Apellido</label>
-                    <input type="text" placeholder="Ejemplo" formControlName="apellido">
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input type="text" placeholder="Ejemplo" formControlName="email">
-                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="nombre" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput formControlName="apellido" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                </mat-form-field>
             </div>
             <div class="row">
-                <div>
-                    <label>Contraseña</label>
-                    <input type="text" placeholder="Ejemplo" formControlName="contrasena">
-                </div>
-                <div>
-                    <label>Role de Usuario</label>
-                    <select formControlName="privilegios">
-                        <option *ngFor="let opcion of privilegios" [value]="opcion">{{opcion}}</option>
-                    </select>
-                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" formControlName="contrasena" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Role de Usuario</mat-label>
+                    <mat-select formControlName="privilegios" required>
+                        <mat-option *ngFor="let opcion of privilegios" [value]="opcion">{{opcion}}</mat-option>
+                    </mat-select>
+                </mat-form-field>                
             </div>
         </div>
     </div>
-    <div class="action">
-        <button type="button" [mat-dialog-close]="false"> Cancelar </button>
-        <button type="submit">{{data ? 'Actualizar Usuario' : 'Agregar Usuario'}}</button>
+    <div mat-dialog-actions class="action">
+        <button mat-button [mat-dialog-close]="false" color="warn"> Cancelar </button>
+        <button mat-raised-button type="submit" color="primary">{{data ? 'Actualizar Usuario' : 'Agregar Usuario'}}</button>
     </div>
 </form>

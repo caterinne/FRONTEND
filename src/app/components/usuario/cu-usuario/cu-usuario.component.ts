@@ -6,7 +6,7 @@ import { UsuarioService } from 'src/services/usuario.service';
 @Component({
   selector: 'app-cu-usuario',
   templateUrl: './cu-usuario.component.html',
-  styleUrls: ['./cu-usuario.component.css']
+  styleUrls: ['./cu-usuario.component.scss']
 })
 export class CUUsuarioComponent {
   usuarioForm: FormGroup;

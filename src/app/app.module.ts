@@ -12,7 +12,6 @@ import { CUConvenioComponent } from './components/convenio/cu-convenio/cu-conven
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
@@ -38,6 +37,7 @@ import { DatePipe } from '@angular/common';
 import {LOCALE_ID } from '@angular/core';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
 registerLocaleData(localeEs, 'es');
 
 

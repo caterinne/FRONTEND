@@ -1,59 +1,71 @@
 <div class="title">
   <h1><b>Convenio</b></h1>
 </div>
-<form class="form" [formGroup]="formulario" (ngSubmit)="onFormSubmit(formulario)">
-  <div class="inputContainer">
-    <input name="nombreConvenio" type="text" class="input" formControlName="nombre_conv" placeholder="Ingrese nombre de convenio" required>
-    <label for="" class="label">Convenio</label>
-  </div>
-  <div class="inputContainer">
-    <input name="tipoDeConvenio" type="text" class="input" formControlName="tipo_conv" placeholder="Tipo de convenio" required>
-    <label for="" class="label">Tipo Convenio</label>
-  </div>
-  <div class="orden">
-    <select name="nombreInst" class="seleccion" formControlName="id_institucion" required [selectedIndex]="selectedIndexIns" (change)="onOptionSelected()">
-      <option *ngIf="true" disabled selected value="">Seleccione una institución</option>
-      <option *ngFor="let convenio of optionsInstituciones" [value]="convenio">{{convenio}}</option>
-    </select>
-    <label for="" class="label">Institución</label>
-    <select name="coordinadorInstitucion" class="seleccion" formControlName="id_coordinador" required [selectedIndex]="selectedIndexCoor">
-      <option *ngIf="true" disabled selected value="">Coordinador de institución</option>
-      <option *ngFor="let coordinador of optionsCoor" [value]="coordinador">{{coordinador}}</option>
-    </select>
-    <label for="" class="label">Coordinador</label>
-  </div>
-  <div class="inputContainer">
-    <mat-form-field class="calendario">
-      <mat-label>Vigencia</mat-label>
-      <input matInput [matDatepicker]="vigencia" formControlName="vigencia" name="vigencia" required>
-      <mat-datepicker-toggle matIconSuffix [for]="vigencia"></mat-datepicker-toggle>
-      <mat-datepicker #vigencia></mat-datepicker>
-    </mat-form-field>
+<form [formGroup]="formulario" (ngSubmit)="onFormSubmit(formulario)">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre Convenio</mat-label>
+        <input matInput formControlName="nombre_conv" required>
+      </mat-form-field>
 
-    <mat-form-field class="calendario">
-      <mat-label>Fecha de Firma</mat-label>
-      <input matInput [matDatepicker]="ano_firma" formControlName="ano_firma" name="ano_firma" required>
-      <mat-datepicker-toggle matIconSuffix [for]="ano_firma"></mat-datepicker-toggle>
-      <mat-datepicker #ano_firma></mat-datepicker>
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo Convenio</mat-label>
+        <input matInput formControlName="tipo_conv" required>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Institución</mat-label>
+        <mat-select #nombreInstSelect placeholder="Institucion" formControlName="id_institucion" (selectionChange)="onOptionSelected()" required>
+          <mat-option *ngFor="let institucion of optionsInstituciones" [value]="institucion.ID_Institucion">{{ institucion.Nombre_Institucion }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Coordinador</mat-label>
+        <mat-select matInput name="coordinadorInstitucion" placeholder="Coordinador" formControlName="id_coordinador" required>
+          <mat-option *ngFor="let coordinador of optionsCoor" [value]="coordinador">{{coordinador}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline" class="calendario">
+          <mat-label>Vigencia</mat-label>
+          <input matInput [matDatepicker]="vigencia" formControlName="vigencia" name="vigencia" required>
+          <mat-datepicker-toggle matSuffix [for]="vigencia"></mat-datepicker-toggle>
+          <mat-datepicker #vigencia></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="calendario">
+          <mat-label>Fecha de Firma</mat-label>
+          <input matInput [matDatepicker]="ano_firma" formControlName="ano_firma" name="ano_firma" required>
+          <mat-datepicker-toggle matSuffix [for]="ano_firma"></mat-datepicker-toggle>
+          <mat-datepicker #ano_firma></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo de firma</mat-label>
+        <mat-select matInput name="tipoDeFirma" formControlName="tipo_firma" required>
+            <mat-option *ngFor="let tipo of tipoDeFirma" [value]="tipo">{{tipo}}</mat-option>
+        </mat-select>
     </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Cupos</mat-label>
+        <input matInput type="number" formControlName="cupos" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Documentos</mat-label>
+        <input matInput formControlName="documentos" required>
+      </mat-form-field>
+    </div>
   </div>
-  <div class="inputContainer">
-    <input type="number" class="input" name="cupos" formControlName="cupos" placeholder="Cupos" required>
-    <label for="" class="label">Cupos</label>
-  </div>
-  <div class="inputContainer">
-    <select name="tipoDeFirma" class="seleccion" formControlName="tipo_firma" required>
-      <option *ngIf="true" disabled selected value="">Tipo de firma</option>
-      <option *ngFor="let tipo of tipoDeFirma" [value]="tipo">{{tipo}}</option>
-    </select>
-    <label for="" class="label">Tipo de firma</label>
-  </div>
-  <div class="inputContainer">
-    <input type="text" name="documentos" class="input" formControlName="documentos" placeholder="Documentos" required>
-    <label for="" class="label">Documentos</label>
-  </div>
-  <div class="action">
-    <button type="button" [mat-dialog-close]="false"> Cancelar </button>
-    <button type="submit">{{data ? 'Actualizar Convenio' : 'Agregar Convenio'}}</button>
+  <div mat-dialog-actions class="action">
+      <button mat-button [mat-dialog-close]="false" color="warn"> Cancelar </button>
+      <button mat-raised-button type="submit" color="primary">{{data ? 'Actualizar Convenio' : 'Agregar Convenio'}}</button>
   </div>
 </form>
+

@@ -2,13 +2,13 @@
     display: flex;
     gap: 10px;
     
-    .mat-form-field{
+    mat-form-field{
        width: 100%; 
     }
 }
-
 .content{
     padding-top: 10px;
+    width: 100%;
 }
 
 .action{
@@ -24,6 +24,6 @@
 
 .title{
     h1{
-        text-align: center !important;
+        text-align: center;
     }
 }

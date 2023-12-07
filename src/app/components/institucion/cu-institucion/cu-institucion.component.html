@@ -2,38 +2,38 @@
     <h1><b>Institución</b></h1>
 </div>
 <form [formGroup]="institucionForm" (ngSubmit)="onFormSubmit()">
-    <div class="content">
+    <div mat-dialog-content class="content">
         <div class="row">
           <mat-form-field appearance="outline">
             <mat-label>Nombre Institución</mat-label>
-            <input matInput formControlName="nombre_inst" placeholder="Ejemplo">
+            <input matInput formControlName="nombre_inst" required>
           </mat-form-field>
     
           <mat-form-field appearance="outline">
             <mat-label>Pais</mat-label>
-            <input matInput formControlName="pais" placeholder="Ejemplo">
+            <input matInput formControlName="pais" required>
           </mat-form-field>
     
           <mat-form-field appearance="outline">
             <mat-label>Tipo Institución</mat-label>
-            <input matInput formControlName="tipo_institucion" placeholder="Ejemplo">
+            <input matInput formControlName="tipo_institucion" required>
           </mat-form-field>
         </div>
     
         <div class="row">
           <mat-form-field appearance="outline">
             <mat-label>Unidad Academica</mat-label>
-            <input matInput formControlName="unidad_academica" placeholder="Ejemplo">
+            <input matInput formControlName="unidad_academica" required>
           </mat-form-field>
     
           <mat-form-field appearance="outline">
             <mat-label>Alcance</mat-label>
-            <input matInput formControlName="alcance" placeholder="Ejemplo">
+            <input matInput formControlName="alcance" required>
           </mat-form-field>
         </div>
       </div>
     
-      <div class="action">
+      <div mat-dialog-actions class="action">
         <button mat-button [mat-dialog-close]="false" color="warn"> Cancelar </button>
         <button mat-raised-button type="submit" color="primary">{{data ? 'Actualizar Institución' : 'Agregar Institución'}}</button>
       </div>

@@ -7,7 +7,7 @@ import { CoordinadorService } from 'src/services/coordinador.service';
 @Component({
   selector: 'app-cu-coordinador',
   templateUrl: './cu-coordinador.component.html',
-  styleUrls: ['./cu-coordinador.component.css']
+  styleUrls: ['./cu-coordinador.component.scss']
 })
 export class CUCoordinadorComponent implements OnInit {
   coordinadorForm: FormGroup;
@@ -24,7 +24,7 @@ export class CUCoordinadorComponent implements OnInit {
     if (this.data) {
         this.coordinadorForm = this.fb.group({
           id_institucion: this.data.ID_Institucion,
-          tipo: this.data.Tipo,
+          tipo: this.data.Tipo_Coordinador,
           nombre: this.data.Nombre,
           correo: this.data.Correo,
         });
@@ -100,7 +100,7 @@ export class CUCoordinadorComponent implements OnInit {
   initializeForm() {
     this.formulario = {
       id_institucion: this.data?.ID_Institucion || '',
-      tipo: this.data?.Tipo || '',
+      tipo: this.data?.Tipo_Coordinador || '',
       nombre: this.data?.Nombre || '',
       correo: this.data?.Correo || '',
     };
