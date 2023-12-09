@@ -2,7 +2,6 @@
 
 - Implementar los estados para las vigencias. Ejemplo: caducado, activo, renovando (hacer el 08-12)
 - Implementar el mostrar y ocultar contraseña en perfil de usuario (hacer el 08-12)
-- Falta modificar usuarios por parte del admin y eliminar (hacer el 08-12)
 - Diseñar perfil usuario (hacer el 09-12)
 - Arreglar los delete (hacer el 09-12)
 - Agregar close y back a las páginas (hacer el 10-12)

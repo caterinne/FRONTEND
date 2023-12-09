@@ -64,10 +64,11 @@ export class UsuarioComponent {
       this.usuario.deleteUsuario(id).subscribe({
         next: (res) => {
           this.coreService.openSnackBar('Usuario eliminado', 'Aceptar');
+          this.getUsuarioList();
         },
         error: (error) => {
-          this.coreService.openSnackBar('Usuario eliminado', 'Aceptar');
-          window.location.reload();
+          this.coreService.openSnackBar('ERROR', 'Aceptar');
+          this.getUsuarioList();
         }
       });
     } else {

@@ -143,8 +143,7 @@ private async updateCoordinadoresOptions(selectedInstitucionId: any): Promise<vo
     this.http.post('http://localhost:3000/api/convenios', this.formulario.value).subscribe(
       (data) => {
         this.coreService.openSnackBar('Convenio creado', 'Aceptar');
-        this.dialogRef.close(true);
-        window.location.reload();
+        this.closeDialog();
       },
       (error) => {
         this.coreService.openSnackBar('Error al crear convenio', 'Aceptar');

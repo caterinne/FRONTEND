@@ -6,6 +6,7 @@ import { CUCoordinadorComponent } from '../coordinador/cu-coordinador/cu-coordin
 import { CUUsuarioComponent } from '../usuario/cu-usuario/cu-usuario.component';
 import { LoginService } from 'src/guards/login.service';
 import { Router } from '@angular/router';
+import { ConveniosComponent } from '../convenio/convenios.component';
 
 @Component({
   selector: 'app-header',
@@ -45,7 +46,7 @@ export class HeaderComponent{
   }
   
   handleDialogClose(): void {
-    this.selectedOption = ''; // Restablecer selectedOption al cerrar cualquier diálogo
+    this.selectedOption = '';
   }
   
   
@@ -72,6 +73,7 @@ export class HeaderComponent{
 
     dialogRef.afterClosed().subscribe(() => {
       this.handleDialogClose();
+      
     });
   }
 
