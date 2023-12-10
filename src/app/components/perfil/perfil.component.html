@@ -13,9 +13,15 @@
             <div *ngIf="user" class="profile-container">
                 <h1><b>{{ user.name }} {{ user.lastname }}</b></h1>
                 <p><b>Email: </b>{{ user.email }}</p>
-                <p><b>Contraseña: </b>{{ user.password }}</p>
+                <p><b>Contraseña: </b>
+                    <span *ngIf="!showPassword">{{ hidePassword(user.password) }}</span>
+                    <span *ngIf="showPassword">{{ user.password }}</span>
+                    <button (click)="togglePasswordVisibility()">
+                      {{ showPassword ? 'Ocultar' : 'Mostrar' }} Contraseña
+                    </button>
+                  </p>                  
                 <p><b>¿Tiene privilegios?: </b>{{ user.role }}</p>
-                <button   *ngIf="user.role.toLowerCase() === 'admin'" class="center-button" (click)="verUsuarios()">Ver Usuarios</button>
+                <button *ngIf="user.role.toLowerCase() === 'admin'" class="center-button" (click)="verUsuarios()">Ver Usuarios</button>
             </div>
         </nav>
     </div>

@@ -32,3 +32,16 @@
 .mat-mdc-paginator{
     background-color: #f4f5f9;
 }
+
+/* Estilos para el estado "Caducado" */
+.caducado {
+  color: #af302e;
+  background-color: #ffe2dd;
+}
+
+/* Estilos para el estado "Vigente" */
+.vigente {
+  color: #34684e;
+  background-color: #dceedc;
+}
+

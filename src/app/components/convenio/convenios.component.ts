@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/guards/login.service';
 import { CoreService } from 'src/app/core/core.service';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -19,7 +20,7 @@ import { CoreService } from 'src/app/core/core.service';
   styleUrls: ['./convenios.component.scss']
 })
 export class ConveniosComponent implements OnInit {
-  displayedColumns: string[] = ['Alcance','Cupos', 'Pais', 'Nombre_Institucion', 
+  displayedColumns: string[] = ['Estado','Alcance','Cupos', 'Pais', 'Nombre_Institucion', 
     'Tipo_Convenio', 'Vigencia', 'Nombre_Coordinador',
     'Correo_Coordinador', 'Action', 
 
@@ -32,7 +33,8 @@ export class ConveniosComponent implements OnInit {
   ngOnInit(): void {
     this.getConvenioList();
   }
-  constructor(private convenio: ConvenioService, private dialog: MatDialog, private router: Router, public loginService: LoginService, private coreService: CoreService){}
+  constructor(private convenio: ConvenioService, private dialog: MatDialog, private router: Router, public loginService: LoginService, 
+    private coreService: CoreService, private datePipe:DatePipe){}
 
   getConvenioList(){
     this.convenio.getConvenioList().subscribe({
@@ -115,5 +117,31 @@ export class ConveniosComponent implements OnInit {
 
   disableOptions(): boolean {
     return this.loginService.getUserRole()?.toLowerCase() === 'viewer';
+  }
+  estadoVigencia(convenio: any): string {
+    const fechaVigencia = new Date(convenio.Vigencia);
+    const fechaActual = new Date();
+
+    return fechaActual > fechaVigencia ? 'Caducado' : 'Vigente';
+  }
+  estadoClass(convenio: any): string {
+    return this.estadoVigencia(convenio).toLowerCase();
+  }
+
+  cellStyles(convenio: any): any {
+    const estado = this.estadoVigencia(convenio);
+    return {
+      'border-radius': '9px',
+      'display': 'inline-block', // Para que el borde rodee el texto
+      'padding': '3px',
+      'padding-left': estado === 'Caducado' ? '20px' : '20px',  
+      'padding-right': estado === 'Caducado' ? '20px' : '35px',
+    };
+  }
+
+  textStyle(convenio: any): any {
+    return {
+      'font-weight': this.estadoVigencia(convenio) === 'Caducado' ? '500' : '500', // Puedes ajustar el valor según tus preferencias
+    };
   }
 }

@@ -10,6 +10,7 @@ import { LoginService } from 'src/guards/login.service';
 })
 export class PerfilComponent {
   user: any;
+  showPassword = false;
 
   constructor(private loginService: LoginService, private router: Router) {}
 
@@ -28,6 +29,12 @@ export class PerfilComponent {
     );
   }
 
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+  hidePassword(password: string): string {
+    return password.replace(/./g, '*');
+  }
   verUsuarios(): void {
     this.router.navigate(['/usuario']);
   }

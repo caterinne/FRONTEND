@@ -15,7 +15,15 @@
 
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" matSort>
-  
+      <ng-container matColumnDef="Estado">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let element">
+          <span [ngClass]="estadoClass(element)" [ngStyle]="textStyle(element)" [style]="cellStyles(element)">
+            {{ estadoVigencia(element) }}
+          </span>
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="Alcance">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Alcance </th>
         <td mat-cell *matCellDef="let row" class="column-cell"> {{row.Alcance}} </td>
