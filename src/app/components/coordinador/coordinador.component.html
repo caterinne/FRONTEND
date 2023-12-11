@@ -38,7 +38,7 @@
             <ng-container matColumnDef="Action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                 <td mat-cell *matCellDef="let row">
-                    <button mat-icon-button color="primary" (click)="editInstitucionForm(row)" *ngIf="showOptions()" [attr.disabled]="disableOptions() ? true : null">
+                    <button mat-icon-button color="primary" (click)="editCoordinadorForm(row)" *ngIf="showOptions()" [attr.disabled]="disableOptions() ? true : null">
                         <mat-icon>edit</mat-icon>
                     </button>
                     <button mat-icon-button color="warn" (click)="deleteCoordinador(row.ID_Coordinador)" *ngIf="showOptions()" [attr.disabled]="disableOptions() ? true : null">

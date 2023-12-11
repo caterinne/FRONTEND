@@ -24,18 +24,8 @@ export class ConvenioService {
     return this.http.delete(`http://localhost:3000/api/convenios/${id}`);
   }
   
-
   getConvenioDetails(convenioId: string): Observable<any> {
-    // Obtener los detalles del convenio por su ID
     const url = `${this.apiUrl}/convenios/${convenioId}`;
     return this.http.get<any>(url);
   }
-
-  getPaises(): Observable<string[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/convenios`)
-      .pipe(
-        map(data => [...new Set(data.map(data => data.Pais))])
-      );
-  }
-  
 }

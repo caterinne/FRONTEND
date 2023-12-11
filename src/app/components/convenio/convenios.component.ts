@@ -36,7 +36,7 @@ export class ConveniosComponent implements OnInit {
   }
 
   constructor(private convenio: ConvenioService, private dialog: MatDialog, private router: Router, public loginService: LoginService, 
-    private coreService: CoreService, private datePipe:DatePipe,private informeService: InformeService){}
+    private coreService: CoreService){}
 
     getConvenioList() {
       this.convenio.getConvenioList().subscribe({
@@ -44,16 +44,6 @@ export class ConveniosComponent implements OnInit {
           this.dataSource = new MatTableDataSource(res);
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
-  
-        // Envía los datos al servicio de informes
-        const totalVigentes = res.filter((convenio: any) => this.estadoVigencia(convenio) === 'Vigente').length;
-        const totalPorCaducar = this.getTotalConveniosPorCaducar(res);
-
-        this.informeService.setConveniosVigentes(totalVigentes);
-        this.informeService.setConveniosPorCaducar(totalPorCaducar)
-  
-        // Guarda los datos actualizados en el LocalStorage
-        this.guardarDatosEnLocalStorage(totalVigentes, totalPorCaducar);
 
         console.log(res);
       },
@@ -61,25 +51,6 @@ export class ConveniosComponent implements OnInit {
     });
   }
 
-  guardarDatosEnLocalStorage(totalVigentes: number, totalPorCaducar: number): void {
-    localStorage.setItem('totalVigentes', totalVigentes.toString());
-    localStorage.setItem('totalPorCaducar', totalPorCaducar.toString());
-    console.log('Datos guardados en el LocalStorage:', { totalVigentes, totalPorCaducar });
-  }
-
-  getTotalConveniosPorCaducar(convenios: any[]): number {
-    const diasAntesDeCaducar = 7; 
-
-    const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0);
-
-    return convenios.filter((convenio: any) => {
-      const fechaVigencia = new Date(convenio.Vigencia);
-      const diasRestantes = Math.floor((fechaVigencia.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24));
-
-      return diasRestantes <= diasAntesDeCaducar && diasRestantes >= 0;
-    }).length;
-  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -98,7 +69,6 @@ export class ConveniosComponent implements OnInit {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          // Agrega cualquier otro encabezado necesario aquí
         },
       })
       .then(response => {
@@ -108,9 +78,8 @@ export class ConveniosComponent implements OnInit {
         return response.json();
       })
       .then(data => {
-        // Aquí puedes manejar la respuesta exitosa si es necesario
         this.coreService.openSnackBar('Convenio eliminado', 'Aceptar');
-        this.getConvenioList(); // Actualiza la lista después de la eliminación
+        this.getConvenioList();
       })
       .catch(error => {
         console.error('Error al eliminar convenio:', error);
@@ -124,16 +93,12 @@ export class ConveniosComponent implements OnInit {
   
 
   editConveniosForm(data: any) {
-    // Abre el diálogo y pasa los datos para editar
     const dialogRef = this.dialog.open(CUConvenioComponent, {
       data,
     });
-  
-    // Suscríbete al evento después de cerrar el diálogo
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // Si result es verdadero, significa que se realizó una actualización
-        this.getConvenioList(); // Actualiza la lista después de la edición
+        this.getConvenioList(); 
       }
     });
   }
@@ -163,7 +128,7 @@ export class ConveniosComponent implements OnInit {
     const estado = this.estadoVigencia(convenio);
     return {
       'border-radius': '9px',
-      'display': 'inline-block', // Para que el borde rodee el texto
+      'display': 'inline-block',
       'padding': '3px',
       'padding-left': estado === 'Caducado' ? '20px' : '20px',  
       'padding-right': estado === 'Caducado' ? '20px' : '35px',
@@ -172,7 +137,7 @@ export class ConveniosComponent implements OnInit {
 
   textStyle(convenio: any): any {
     return {
-      'font-weight': this.estadoVigencia(convenio) === 'Caducado' ? '500' : '500', // Puedes ajustar el valor según tus preferencias
+      'font-weight': this.estadoVigencia(convenio) === 'Caducado' ? '500' : '500', 
     };
   }
 }

@@ -8,29 +8,32 @@
 <body class="body">
 <header><app-header></app-header></header>
 <div class="informe-container">
-    <div class="informe">
-      <h2>Informes</h2>
-      <div>
-        <p>Total de Convenios Vigentes: {{ totalConveniosVigentes }}</p>
-        <button mat-raised-button (click)="openConveniosVigentesModal()">Ver Convenios Vigentes</button>
-      </div>
-  
-      <div>
-        <p>Total de Convenios por Caducar: {{ totalConveniosPorCaducar }} dentro de 7 días</p>
-        <button mat-raised-button (click)="openConveniosCaducadosModal()">Ver Convenios por Caducar</button>
-      </div>
-
-      <div>
-        <p>Total de Convenios Nacionales: {{ totalConveniosNacionales }}</p>
-        <button mat-raised-button (click)="openConveniosNacionalModal()">Ver Convenios Nacionales</button>
-      </div>
-      <div>
-        <p>Total de Convenios Internacionales: {{ totalConveniosInternacionales }}</p>
-        <button mat-raised-button (click)="openConveniosInternacionalModal()">Ver Convenios Internacionales</button>
-      </div>
-    </div>
+  <div class="informe">
+    <h2>Informes de convenios</h2>
+    <table>
+      <tr>
+        <td>Total de Convenios Vigentes:</td>
+        <td>{{ totalConveniosVigentes }}</td>
+        <td><button mat-button class="custom-button1" (click)="openConveniosVigentesModal()">Ver Convenios Vigentes</button></td>
+      </tr>
+      <tr>
+        <td>Total de Convenios por Caducar dentro de 7 días:</td>
+        <td>{{ totalConveniosPorCaducar }}</td>
+        <td><button mat-button class="custom-button2" (click)="openConveniosCaducadosModal()">Ver Convenios por Caducar</button></td>
+      </tr>
+      <tr>
+        <td>Total de Convenios Nacionales:</td>
+        <td>{{ totalConveniosNacionales }}</td>
+        <td><button mat-button class="custom-button3" (click)="openConveniosNacionalModal()">Ver Convenios Nacionales</button></td>
+      </tr>
+      <tr>
+        <td>Total de Convenios Internacionales:</td>
+        <td>{{ totalConveniosInternacionales }}</td>
+        <td><button mat-button class="custom-button4" (click)="openConveniosInternacionalModal()">Ver Convenios Internacionales</button></td>
+      </tr>
+    </table>
   </div>
-  
-  
+</div>
+
 </body>
 </html>

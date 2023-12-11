@@ -57,8 +57,7 @@ dataSource!: MatTableDataSource<any>;
           this.getCoordinadorList();
         },
         error: (error) => {
-          this.coreService.openSnackBar('Coordinador eliminado', 'Aceptar');
-          this.getCoordinadorList();
+          this.coreService.openSnackBar('ERROR', 'Aceptar');
         }
       });
     } else {
@@ -67,7 +66,7 @@ dataSource!: MatTableDataSource<any>;
   }
   
 
-  editInstitucionForm(data: any) {
+  editCoordinadorForm(data: any) {
     const dialogRef = this.dialog.open(CUCoordinadorComponent, {
       data,
     });

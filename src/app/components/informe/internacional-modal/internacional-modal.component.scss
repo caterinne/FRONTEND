@@ -1,0 +1,48 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+thead {
+    background-color: #c8c9cc;
+}
+  
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+  
+
+tbody tr:hover {
+    background-color: #e3e5eb;
+}
+body {
+    margin: 0;
+}
+  
+h2 {
+    background-color: #253e85;
+    color: #fff; 
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+
+.close-button {
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    box-shadow: none !important;
+}
+  
+.close-button:hover {
+    color: red; 
+    box-shadow: none !important;
+}
+  

@@ -1,12 +1,11 @@
 ## FALTA POR TERMINAR:
 - Diseñar perfil usuario (hacer el 11-12)
-- Diseñar informes (hacer el 11-12)
-- Arreglar los delete (hacer el 11-12)
 - Agregar close y back a las páginas (hacer el 11-12)
 
-- Implementación de alerta como ventana emergente y enviar al email (SI ES QUE ALCANZAMOS)
-- Implementar mensaje default para que jefe ORI lo envie rapidamente (SI ES QUE ALCANZAMOS)
+- Implementación de alerta como ventana emergente y enviar al email
+- Implementar mensaje default para que jefe ORI lo envie rapidamente
 - SI ALCANZO HACER EL CAMBIAR CONTRASEÑA DESDE EL PERFIL
+- Implementación del historial de convenios
   
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 

@@ -12,7 +12,7 @@ import { InternacionalModalComponent } from './internacional-modal/internacional
 @Component({
   selector: 'app-informe',
   templateUrl: './informe.component.html',
-  styleUrls: ['./informe.component.css']
+  styleUrls: ['./informe.component.scss']
 })
 export class InformeComponent {
   totalConveniosVigentes: number = 0;
@@ -57,9 +57,12 @@ export class InformeComponent {
       map((data) => data.filter((convenio) => this.estadoVigencia(convenio) === 'Vigente'))
     );
   }
+
   getConveniosCaducados(): Observable<any> {
     return this.http.get<any[]>(`${this.apiUrl}/convenios`).pipe(
-      map((data) => data.filter((convenio) => this.estadoVigencia(convenio) === 'Caducado'))
+      map((data) =>
+        data.filter((convenio) => this.estadoVigencia(convenio) === 'Vigente' && this.caducaEnProximos7Dias(convenio))
+      )
     );
   }
 
@@ -83,12 +86,12 @@ export class InformeComponent {
     });
   } 
   openConveniosCaducadosModal() {
-    this.getConveniosCaducados().subscribe((conveniosCaducados) => {
+    this.getConveniosCaducados().subscribe((conveniosPorCaducar) => {
       this.dialog.open(CaducadoModalComponent, {
-        data: { convenios: conveniosCaducados },
+        data: { convenios: conveniosPorCaducar },
       });
     });
-  } 
+  }
   openConveniosNacionalModal() {
     this.getConveniosNacionales().subscribe((conveniosNacionales) => {
       this.dialog.open(NacionalModalComponent, {
@@ -129,7 +132,6 @@ export class InformeComponent {
     localStorage.setItem('totalPorCaducar', totalPorCaducar.toString());
     localStorage.setItem('totalNacionales', totalNacionales.toString());
     localStorage.setItem('totalInternacionales', totalInternacionales.toString());
-    console.log('Datos guardados en el LocalStorage:', { totalVigentes, totalPorCaducar, totalNacionales, totalInternacionales });
   }
 
   getTotalConveniosPorCaducar(convenios: any[]): number {
@@ -156,6 +158,14 @@ export class InformeComponent {
       map((data) => data.filter((convenio) => convenio.Alcance === 'Internacional').length)
     );
   } 
-  
+    caducaEnProximos7Dias(convenio: any): boolean {
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+
+    const fechaVigencia = new Date(convenio.Vigencia);
+    const diasRestantes = Math.floor((fechaVigencia.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24));
+
+    return diasRestantes <= 7 && diasRestantes >= 0;
+  }
 }
 

@@ -5,6 +5,8 @@ import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { CoreService } from 'src/app/core/core.service';
+import { ConvenioService } from 'src/services/convenio.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 interface Institucion {
   ID_Institucion: number;
@@ -49,6 +51,7 @@ export class CUConvenioComponent implements OnInit {
   selectedCoor: string | null = '';
   selectedInstitucion: string | null = null;
 
+  dataSource: MatTableDataSource<any> = new MatTableDataSource();
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CUConvenioComponent>,
@@ -95,9 +98,6 @@ private async updateCoordinadoresOptions(selectedInstitucionId: any): Promise<vo
       .filter(coor => coor.ID_Institucion === selectedInstitucionId)
       .map(coor => coor.ID_Coordinador);
 
-    console.log('Options Coor:', this.optionsCoor);
-    console.log('ID Coor:', this.idCoor);
-
     this.cdRef.detectChanges();
   });
 }
@@ -118,8 +118,9 @@ private async updateCoordinadoresOptions(selectedInstitucionId: any): Promise<vo
   private updateConvenio() {
     this.http.put(`http://localhost:3000/api/convenios/${this.data.ID_Convenio}`, this.formulario.value).subscribe({
       next: (val: any) => {
-        alert('Convenio actualizado');
         this.dialogRef.close(true);
+        this.coreService.openSnackBar('Convenio Actualizado', 'Aceptar');
+        window.location.reload();
       },
       error: (err: any) => {
         console.error(err);
@@ -136,26 +137,18 @@ private async updateCoordinadoresOptions(selectedInstitucionId: any): Promise<vo
       vigencia: formattedVigencia,
       ano_firma: formattedAnoFirma,
     });
-    console.log('Selected Coordinador ID:', this.formulario.value.id_coordinador);
-    console.log(this.formulario.value.vigencia);
-    console.log(this.formulario.value.ano_firma);
-    console.log(this.formulario.value);
     this.http.post('http://localhost:3000/api/convenios', this.formulario.value).subscribe(
       (data) => {
+        this.dialogRef.close(true);
         this.coreService.openSnackBar('Convenio creado', 'Aceptar');
-        this.closeDialog();
+        window.location.reload();
+        
       },
       (error) => {
         this.coreService.openSnackBar('Error al crear convenio', 'Aceptar');
         console.error(error);
       });
   }
-
-  closeDialog() {
-    this.dialogRef.close('');
-    window.location.reload();
-  }
-
   hacerPeticion() {
     this.http.get(`${this.url}nombresInstituciones/`).subscribe(
       (data: any) => {

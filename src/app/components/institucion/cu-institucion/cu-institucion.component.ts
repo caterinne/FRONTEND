@@ -15,7 +15,6 @@ export class CUInstitucionComponent implements OnInit{
   constructor(private fb: FormBuilder, private institucionService: InstitucionService, 
     private dialogRef:MatDialogRef<CUInstitucionComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private coreService: CoreService) {
   
-    // Verificación para asegurarse de que this.data no sea null
     if (this.data) {
         this.institucionForm = this.fb.group({
           nombre_inst: this.data.Nombre_Institucion,
@@ -25,7 +24,6 @@ export class CUInstitucionComponent implements OnInit{
           alcance: this.data.Alcance,
         });
     } else {
-        // Si this.data es null, podrías inicializar el formulario con valores predeterminados o dejar el formulario vacío, dependiendo de tus requisitos.
         this.institucionForm = this.fb.group({
           nombre_inst: '',
           unidad_academica: '',
@@ -47,23 +45,24 @@ export class CUInstitucionComponent implements OnInit{
       if(this.data){
         this.institucionService.updateInstitucion(this.data.id,this.institucionForm.value).subscribe({
           next: (val:any) => {
-            this.coreService.openSnackBar('Institución actualizada', 'Aceptar');
             this.dialogRef.close(true);
+            this.coreService.openSnackBar('Institución actualizada', 'Aceptar');
           },
           error: (err: any) => {
-            this.coreService.openSnackBar('Institución actualizada', 'Aceptar');
             this.dialogRef.close(true);
+            this.coreService.openSnackBar('ERROR', 'Aceptar');
           }
         });
       } else {
         this.institucionService.addInstitucion(this.institucionForm.value).subscribe({
           next: (val: any) => {
             console.log('Respuesta del servidor (addInstitucion):', val);
-            this.coreService.openSnackBar('Institución creada', 'Aceptar');
             this.dialogRef.close(true);
+            this.coreService.openSnackBar('Institución creada', 'Aceptar');
             window.location.reload();
           },
           error: (err: any) => {
+            this.coreService.openSnackBar('ERROR', 'Aceptar');
             console.error('Error en addInstitucion:', err);
           }
         });
@@ -79,8 +78,8 @@ export class CUInstitucionComponent implements OnInit{
     alcance: '',
     tipo_institucion: '',
   };
+
   initializeForm() {
-    // Asegúrate de tener lógica para inicializar el formulario con los datos existentes
     this.formulario = {
       nombre_inst: this.data?.Nombre_Institucion || '',
       unidad_academica: this.data?.Unidad_Academica || '',

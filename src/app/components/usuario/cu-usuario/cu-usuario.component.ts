@@ -16,8 +16,7 @@ export class CUUsuarioComponent {
   constructor(private fb: FormBuilder, private usuarioService: UsuarioService, 
     private dialogRef:MatDialogRef<CUUsuarioComponent>, @Inject(MAT_DIALOG_DATA) public data: any, 
     private coreService: CoreService) {
-  
-    // Verificación para asegurarse de que this.data no sea null
+
     if (this.data) {
         this.usuarioForm = this.fb.group({
           email: this.data.email,
@@ -27,7 +26,6 @@ export class CUUsuarioComponent {
           privilegios: this.data.privilegios
         });
     } else {
-        // Si this.data es null, podrías inicializar el formulario con valores predeterminados o dejar el formulario vacío, dependiendo de tus requisitos.
         this.usuarioForm = this.fb.group({
           email: '',
           contrasena: '',
@@ -50,26 +48,26 @@ export class CUUsuarioComponent {
         console.log(this.data.ID_Usuario)
         this.usuarioService.updateUsuario(this.data.ID_Usuario,this.usuarioForm.value).subscribe({
           next: (val) => {
-            this.coreService.openSnackBar('Usuario Actualizado', 'Aceptar');
             this.dialogRef.close(true);
+            this.coreService.openSnackBar('Usuario Actualizado', 'Aceptar');
             window.location.reload();
           },
           error: (err) => {
-            this.coreService.openSnackBar('Usuario Actualizado', 'Aceptar');
             this.dialogRef.close(true);
-            window.location.reload();
+            this.coreService.openSnackBar('ERROR', 'Aceptar');
             console.error(err);
           }
         });
       } else {
         this.usuarioService.addUsuario(this.usuarioForm.value).subscribe({
           next: (val: any) => {
-            console.log('Respuesta del servidor (addConvenio):', val);
-            this.coreService.openSnackBar(('Usuario ' + val.nombre + ' ' + val.apellido + ' creado'), 'Aceptar');
             this.dialogRef.close(true);
+            this.coreService.openSnackBar(('Usuario ' + val.nombre + ' ' + val.apellido + ' creado'), 'Aceptar');
 
           },
           error: (err: any) => {
+            this.dialogRef.close(true);
+            this.coreService.openSnackBar(('ERROR'), 'Aceptar');
             console.error('Error en addConvenio:', err);
           }
         });

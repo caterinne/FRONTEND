@@ -7,6 +7,7 @@ import { CUUsuarioComponent } from '../usuario/cu-usuario/cu-usuario.component';
 import { LoginService } from 'src/guards/login.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -47,9 +48,6 @@ export class HeaderComponent{
   handleDialogClose(): void {
     this.selectedOption = '';
   }
-  
-  
-  
 
   addConveniosForm(){
     const dialogRef = this.dialog.open(CUConvenioComponent);

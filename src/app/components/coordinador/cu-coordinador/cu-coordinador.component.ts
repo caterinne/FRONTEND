@@ -51,13 +51,14 @@ export class CUCoordinadorComponent implements OnInit {
       if(this.data){
         this.coordinadorService.updateCoordinador(this.data.ID_Institucion,this.coordinadorForm.value).subscribe({
           next: (val:any) => {
-            this.coreService.openSnackBar('Coordinador actualizado', 'Aceptar');
             this.dialogRef.close(true);
+            this.coreService.openSnackBar('Coordinador actualizado', 'Aceptar');
+            window.location.reload();
           },
           error: (err: any) => {
+            this.dialogRef.close(true);
             this.coreService.openSnackBar('Error en actualizar coordinador', 'Aceptar');
             console.error(err);
-            this.dialogRef.close(true);
           }
         });
       } else {
@@ -65,8 +66,8 @@ export class CUCoordinadorComponent implements OnInit {
           next: (val: any) => {
             id_institucion: this.idInstituciones[this.optionsInstituciones.indexOf(this.coordinadorForm.value.id_institucion)]
             console.log('Respuesta del servidor (addCoordinador):', val);
-            this.coreService.openSnackBar('Coordinador creado', 'Aceptar');
             this.dialogRef.close(true);
+            this.coreService.openSnackBar('Coordinador creado', 'Aceptar');
             window.location.reload();
           },
           error: (err: any) => {

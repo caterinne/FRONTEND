@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -33,4 +34,5 @@ export class InformeService {
   setConveniosInternacionales(total: number) {
     this.conveniosInternacionalesSubject.next(total);
   }
+
 }
