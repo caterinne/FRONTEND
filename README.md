@@ -1,5 +1,6 @@
 ## FALTA POR TERMINAR:
 - Diseñar perfil usuario (hacer el 11-12)
+- Diseñar informes (hacer el 11-12)
 - Arreglar los delete (hacer el 11-12)
 - Agregar close y back a las páginas (hacer el 11-12)
 
