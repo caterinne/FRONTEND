@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/guards/login.service';
 import { CoreService } from 'src/app/core/core.service';
 import { DatePipe } from '@angular/common';
+import { InformeService } from 'src/services/informe.service';
 
 
 
@@ -33,15 +34,26 @@ export class ConveniosComponent implements OnInit {
   ngOnInit(): void {
     this.getConvenioList();
   }
-  constructor(private convenio: ConvenioService, private dialog: MatDialog, private router: Router, public loginService: LoginService, 
-    private coreService: CoreService, private datePipe:DatePipe){}
 
-  getConvenioList(){
-    this.convenio.getConvenioList().subscribe({
-      next: (res) => {
-        this.dataSource = new MatTableDataSource(res);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+  constructor(private convenio: ConvenioService, private dialog: MatDialog, private router: Router, public loginService: LoginService, 
+    private coreService: CoreService, private datePipe:DatePipe,private informeService: InformeService){}
+
+    getConvenioList() {
+      this.convenio.getConvenioList().subscribe({
+        next: (res) => {
+          this.dataSource = new MatTableDataSource(res);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+  
+        // Envía los datos al servicio de informes
+        const totalVigentes = res.filter((convenio: any) => this.estadoVigencia(convenio) === 'Vigente').length;
+        const totalPorCaducar = this.getTotalConveniosPorCaducar(res);
+
+        this.informeService.setConveniosVigentes(totalVigentes);
+        this.informeService.setConveniosPorCaducar(totalPorCaducar)
+  
+        // Guarda los datos actualizados en el LocalStorage
+        this.guardarDatosEnLocalStorage(totalVigentes, totalPorCaducar);
 
         console.log(res);
       },
@@ -49,6 +61,25 @@ export class ConveniosComponent implements OnInit {
     });
   }
 
+  guardarDatosEnLocalStorage(totalVigentes: number, totalPorCaducar: number): void {
+    localStorage.setItem('totalVigentes', totalVigentes.toString());
+    localStorage.setItem('totalPorCaducar', totalPorCaducar.toString());
+    console.log('Datos guardados en el LocalStorage:', { totalVigentes, totalPorCaducar });
+  }
+
+  getTotalConveniosPorCaducar(convenios: any[]): number {
+    const diasAntesDeCaducar = 7; 
+
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+
+    return convenios.filter((convenio: any) => {
+      const fechaVigencia = new Date(convenio.Vigencia);
+      const diasRestantes = Math.floor((fechaVigencia.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24));
+
+      return diasRestantes <= diasAntesDeCaducar && diasRestantes >= 0;
+    }).length;
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

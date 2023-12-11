@@ -1,12 +1,5 @@
 ## FALTA POR TERMINAR:
-- Diseñar perfil usuario (hacer el 10-12)
-- ## Implementar sistemas de informes, EJEMPLOS: (IMPORTANTE: HACER EL 10-12) 
-    1) Listado de todos convenios activos
-    2) Listado de todos convenios inactivos
-    3) Listado de todos los convenios realizado entre dos fechas. La fecha es ingresada por el usuario. La idea es evitar que el sistema liste los convenidos realizados en los         años anteriores, pensando que el sistema fue instalado en la empresa.
-    4) Listado de convenios nacionales. ¿Cuáles fueron los convenidos firmados en 2022 o 2023 o 2024?
-    5) Listado de convenios internacionales. ¿Cuáles fueron los convenidos firmados en 2022 o 2023 o 2024?
-
+- Diseñar perfil usuario (hacer el 11-12)
 - Arreglar los delete (hacer el 11-12)
 - Agregar close y back a las páginas (hacer el 11-12)
 

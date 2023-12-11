@@ -12,7 +12,6 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese desde tres letras" #input>
     </mat-form-field>
   </div>
-
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="Estado">

@@ -57,7 +57,7 @@ dataSource!: MatTableDataSource<any>;
           this.getInstitucionList();
         },
         error: (error) => {
-          this.coreService.openSnackBar('Institución eliminada', 'Aceptar');
+          this.coreService.openSnackBar('ERROR', 'Aceptar');
           this.getInstitucionList();
         }
       });

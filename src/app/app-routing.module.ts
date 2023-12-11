@@ -8,6 +8,7 @@ import { CoordinadorComponent } from './components/coordinador/coordinador.compo
 import { InstitucionComponent } from './components/institucion/institucion.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
+import { InformeComponent } from './components/informe/informe.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'convenio-detalle/:id', component: ConvenioDetalleComponent, canActivate: [loginGuard]},
   { path: 'coordinador', component: CoordinadorComponent, canActivate: [loginGuard]},
   { path: 'institucion', component: InstitucionComponent, canActivate: [loginGuard]},
+  { path: 'informe', component: InformeComponent, canActivate: [loginGuard]},
 ];
 
 @NgModule({

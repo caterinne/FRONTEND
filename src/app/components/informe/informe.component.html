@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convenios</title>
+</head>
+<body class="body">
+<header><app-header></app-header></header>
+<div class="informe-container">
+    <div class="informe">
+      <h2>Informes</h2>
+      <div>
+        <p>Total de Convenios Vigentes: {{ totalConveniosVigentes }}</p>
+        <button mat-raised-button (click)="openConveniosVigentesModal()">Ver Convenios Vigentes</button>
+      </div>
+  
+      <div>
+        <p>Total de Convenios por Caducar: {{ totalConveniosPorCaducar }} dentro de 7 días</p>
+        <button mat-raised-button (click)="openConveniosCaducadosModal()">Ver Convenios por Caducar</button>
+      </div>
+
+      <div>
+        <p>Total de Convenios Nacionales: {{ totalConveniosNacionales }}</p>
+        <button mat-raised-button (click)="openConveniosNacionalModal()">Ver Convenios Nacionales</button>
+      </div>
+      <div>
+        <p>Total de Convenios Nacionales: {{ totalConveniosInternacionales }}</p>
+        <button mat-raised-button (click)="openConveniosInternacionalModal()">Ver Convenios Nacionales</button>
+      </div>
+    </div>
+  </div>
+  
+  
+</body>
+</html>

@@ -11,7 +11,7 @@ import { InstitucionService } from 'src/services/institucion.service';
 })
 export class CUInstitucionComponent implements OnInit{
   institucionForm: FormGroup;
-
+  alcance: string[] = ['Nacional', 'Internacional'];
   constructor(private fb: FormBuilder, private institucionService: InstitucionService, 
     private dialogRef:MatDialogRef<CUInstitucionComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private coreService: CoreService) {
   
