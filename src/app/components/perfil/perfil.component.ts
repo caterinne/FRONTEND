@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/guards/login.service';
+import { Location } from '@angular/common';
 
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent {
   user: any;
-  showPassword = false;
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router, private location: Location) {}
 
   ngOnInit(): void {
     this.getUser();
@@ -28,14 +28,10 @@ export class PerfilComponent {
       }
     );
   }
-
-  togglePasswordVisibility(): void {
-    this.showPassword = !this.showPassword;
-  }
-  hidePassword(password: string): string {
-    return password.replace(/./g, '*');
-  }
   verUsuarios(): void {
     this.router.navigate(['/usuario']);
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

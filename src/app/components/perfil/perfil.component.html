@@ -8,21 +8,31 @@
 <body>
     <div>
         <app-header></app-header>
-
         <nav>
-            <div *ngIf="user" class="profile-container">
-                <h1><b>{{ user.name }} {{ user.lastname }}</b></h1>
-                <p><b>Email: </b>{{ user.email }}</p>
-                <p><b>Contraseña: </b>
-                    <span *ngIf="!showPassword">{{ hidePassword(user.password) }}</span>
-                    <span *ngIf="showPassword">{{ user.password }}</span>
-                    <button (click)="togglePasswordVisibility()">
-                      {{ showPassword ? 'Ocultar' : 'Mostrar' }} Contraseña
-                    </button>
-                  </p>                  
-                <p><b>¿Tiene privilegios?: </b>{{ user.role }}</p>
-                <button *ngIf="user.role.toLowerCase() === 'admin'" class="center-button" (click)="verUsuarios()">Ver Usuarios</button>
+            <button mat-icon-button (click)="goBack()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <div class="miCuenta">
+                <h1>Mi cuenta</h1>
             </div>
+              <div class="informe-container">
+                <div *ngIf="user" class="informe">
+                  <h1 class="nombre"><b>{{ user.name }} {{ user.lastname }}</b></h1>
+                  <table>
+                    <tr>
+                      <td>Email</td>
+                      <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                      <td>Role de usuario</td>
+                      <td>{{ user.role }}</td>
+                    </tr>
+                  </table>
+                  <div class="button-container">
+                    <button mat-button *ngIf="user.role.toLowerCase() === 'admin'" class="custom-button1" (click)="verUsuarios()">Ver Usuarios</button>
+                  </div>
+                </div>
+            </div>  
         </nav>
     </div>
 </body>

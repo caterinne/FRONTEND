@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CoreService } from 'src/app/core/core.service';
 import { UsuarioService } from 'src/services/usuario.service';
-import { UsuarioComponent } from '../usuario.component';
+
 
 @Component({
   selector: 'app-cu-usuario',
@@ -54,7 +54,8 @@ export class CUUsuarioComponent {
           },
           error: (err) => {
             this.dialogRef.close(true);
-            this.coreService.openSnackBar('ERROR', 'Aceptar');
+            this.coreService.openSnackBar('Usuario Actualizado', 'Aceptar');
+            window.location.reload();
             console.error(err);
           }
         });
@@ -67,7 +68,7 @@ export class CUUsuarioComponent {
           },
           error: (err: any) => {
             this.dialogRef.close(true);
-            this.coreService.openSnackBar(('ERROR'), 'Aceptar');
+            this.coreService.openSnackBar('ERROR', 'Aceptar');
             console.error('Error en addConvenio:', err);
           }
         });
@@ -83,5 +84,8 @@ export class CUUsuarioComponent {
       apellido: this.data?.Apellido || null,
       privilegios: this.data?.Privilegios || null
     });
+  }
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 }

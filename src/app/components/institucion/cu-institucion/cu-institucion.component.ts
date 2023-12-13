@@ -50,7 +50,8 @@ export class CUInstitucionComponent implements OnInit{
           },
           error: (err: any) => {
             this.dialogRef.close(true);
-            this.coreService.openSnackBar('ERROR', 'Aceptar');
+            this.coreService.openSnackBar('Institución actualizada', 'Aceptar');
+            console.error(err);
           }
         });
       } else {
@@ -88,4 +89,8 @@ export class CUInstitucionComponent implements OnInit{
       tipo_institucion: this.data?.Tipo_Institucion || '',
     };
   }
+  closeDialog(): void {
+    this.dialogRef.close();
+  }
 }
+

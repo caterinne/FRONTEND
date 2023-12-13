@@ -3,12 +3,14 @@ body, html {
   padding: 0;
   height: 100%; /* Asegura que body y html ocupen el 100% del alto de la ventana */
   background-color: #253e85;
+  user-select: none;
 
 }
 
 #Imagen {
   text-align: center;
   padding-top: 5%;
+  pointer-events: none;
 }
 
 .contenedor {

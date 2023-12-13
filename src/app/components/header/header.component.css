@@ -12,6 +12,7 @@ header {
     margin-left: 10px;
     margin-top: 15px;
     cursor: pointer;
+    user-select: none;
 }
 nav{
     display: flex;

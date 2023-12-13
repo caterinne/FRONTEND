@@ -27,3 +27,18 @@
         text-align: center;
     }
 }
+.close-button {
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    background: none;
+    border: none;
+    outline: none;
+    color: #253e85;
+    box-shadow: none !important;
+}
+  
+.close-button:hover {
+    color: red; 
+    box-shadow: none !important;
+}

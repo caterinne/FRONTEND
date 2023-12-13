@@ -8,6 +8,7 @@
 <body>
     <div>
         <app-header></app-header>
+        <ng-container *ngIf="data">
         <div class="tabla">
             <table>
                 <tr>
@@ -19,11 +20,11 @@
                 </tr>
                 <tr>
                     <td><div><b>Vigencia</b></div></td>
-                    <td>{{ data.Vigencia | date:'d MMMM yyyy' }}</td>
+                    <td>{{ data.Vigencia | date:'dd / MM / yy '}}</td>
                   </tr>
                 <tr>
                     <td><div><b>Fecha de firma</b></div></td>
-                    <td>{{ data.Anio_Firma | date:'d MMMM yyyy' }}</td>
+                    <td>{{ data.Anio_Firma | date:'dd / MM / yy ' }}</td>
                 </tr>
                 <tr>
                     <td><div><b>Tipo de firma</b></div></td>
@@ -74,7 +75,8 @@
                     <td>{{ data.Unidad_Academica }}</td>
                 </tr>
               </table>
-        </div>       
+        </div>  
+        </ng-container>      
     </div>
 </body>
 </html>

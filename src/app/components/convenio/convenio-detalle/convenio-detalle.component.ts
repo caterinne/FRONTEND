@@ -1,3 +1,4 @@
+import { DatePipe } from "@angular/common";
 import { Component, Inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { ConvenioService } from "src/services/convenio.service";
@@ -9,11 +10,11 @@ import { ConvenioService } from "src/services/convenio.service";
   styleUrls: ['./convenio-detalle.component.css'],
 })
 export class ConvenioDetalleComponent {
-  data: any;
+  data: any = {};
 
   constructor(
     private route: ActivatedRoute,
-    private convenioService: ConvenioService
+    private convenioService: ConvenioService, private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -33,4 +34,5 @@ export class ConvenioDetalleComponent {
       error: console.error,
     });
   }
+
 }

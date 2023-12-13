@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CoreService } from 'src/app/core/core.service';
 import { CoordinadorService } from 'src/services/coordinador.service';
 
+
 @Component({
   selector: 'app-cu-coordinador',
   templateUrl: './cu-coordinador.component.html',
@@ -57,8 +58,8 @@ export class CUCoordinadorComponent implements OnInit {
           },
           error: (err: any) => {
             this.dialogRef.close(true);
-            this.coreService.openSnackBar('Error en actualizar coordinador', 'Aceptar');
-            console.error(err);
+            this.coreService.openSnackBar('Coordinador Actualizado', 'Aceptar');
+            window.location.reload();
           }
         });
       } else {
@@ -72,6 +73,8 @@ export class CUCoordinadorComponent implements OnInit {
           },
           error: (err: any) => {
             console.error('Error en addCoordinador:', err);
+            this.dialogRef.close(true);
+            this.coreService.openSnackBar('ERROR', 'Aceptar');
           }
         });
         
@@ -106,6 +109,9 @@ export class CUCoordinadorComponent implements OnInit {
       nombre: this.data?.Nombre || '',
       correo: this.data?.Correo || '',
     };
+  }
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 }
 

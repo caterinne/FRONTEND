@@ -1,0 +1,64 @@
+.informe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45vh;
+    
+}
+body{
+    background-color: #6d8aaf46;
+    user-select: none;
+}
+.informe {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+}
+.miCuenta{
+    text-align: center;
+}
+.nombre {
+    background-color: #253e85;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+    border-radius: 5px;
+}
+  
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    align-items: center;
+}
+  
+tr {
+    border-bottom: 1px solid #ddd;
+}
+  
+td, th {
+    padding: 12px;
+    text-align: left;
+    font-weight: 500;
+}
+  
+tr:hover {
+    background-color: #e3e5eb;
+}
+
+.custom-button1 {
+    min-width: 150px;
+    border-radius: 10px;
+    border-color: white !important;
+    background-color: #253e85;
+    color: white !important; 
+    margin-top: 20px;
+}
+.button-container{
+    display: flex;
+    align-items: center;
+    margin-left: 200px;
+}

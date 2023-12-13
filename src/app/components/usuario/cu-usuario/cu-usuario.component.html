@@ -1,6 +1,9 @@
 <div class="title">
     <h1><b>Usuario</b></h1>
 </div>
+<button class="close-button" mat-icon-button (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+</button>
 <form [formGroup]="usuarioForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="content">
         <div>

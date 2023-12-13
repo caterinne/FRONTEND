@@ -35,9 +35,6 @@ import { ConvenioDetalleComponent } from './components/convenio/convenio-detalle
 import { DatePipe } from '@angular/common';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-import {LOCALE_ID } from '@angular/core';
-import localeEs from '@angular/common/locales/es';
-import { registerLocaleData } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { InformeComponent } from './components/informe/informe.component';
 import { VigenteModalComponent } from './components/informe/vigente-modal/vigente-modal.component';
@@ -45,8 +42,12 @@ import { CaducadoModalComponent } from './components/informe/caducado-modal/cadu
 import { NacionalModalComponent } from './components/informe/nacional-modal/nacional-modal.component';
 import { InternacionalModalComponent } from './components/informe/internacional-modal/internacional-modal.component';
 
-
+import {LOCALE_ID } from '@angular/core';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeEs, 'es');
+
+
 
 
 @NgModule({

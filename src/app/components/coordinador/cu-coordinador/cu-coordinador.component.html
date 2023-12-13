@@ -1,6 +1,9 @@
 <div class="title">
     <h1><b>Coordinador</b></h1>
 </div>
+<button class="close-button" mat-icon-button (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+</button>
 <form [formGroup]="coordinadorForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="content">
             <div class="row">

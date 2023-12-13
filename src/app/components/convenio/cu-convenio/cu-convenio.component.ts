@@ -124,7 +124,8 @@ private async updateCoordinadoresOptions(selectedInstitucionId: any): Promise<vo
       },
       error: (err: any) => {
         console.error(err);
-        alert('Error al actualizar el convenio');
+        this.coreService.openSnackBar('Convenio Actualizado', 'Aceptar');
+        window.location.reload();
       }
     });
   }
@@ -137,6 +138,7 @@ private async updateCoordinadoresOptions(selectedInstitucionId: any): Promise<vo
       vigencia: formattedVigencia,
       ano_firma: formattedAnoFirma,
     });
+    console.log(this.formulario.value);
     this.http.post('http://localhost:3000/api/convenios', this.formulario.value).subscribe(
       (data) => {
         this.dialogRef.close(true);
@@ -180,6 +182,9 @@ private async updateCoordinadoresOptions(selectedInstitucionId: any): Promise<vo
       cupos: this.data?.Cupos || null,
       documentos: this.data?.Documentos || null,
     });
+  }
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 }
 
